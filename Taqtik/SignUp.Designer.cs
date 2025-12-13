@@ -34,8 +34,6 @@
             this.label_username = new System.Windows.Forms.Label();
             this.textBox_username = new System.Windows.Forms.TextBox();
             this.label_team = new System.Windows.Forms.Label();
-            this.label_role = new System.Windows.Forms.Label();
-            this.comboBox_role = new System.Windows.Forms.ComboBox();
             this.comboBox_team = new System.Windows.Forms.ComboBox();
             this.button_signup = new System.Windows.Forms.Button();
             this.checkBox_showpassword = new System.Windows.Forms.CheckBox();
@@ -92,36 +90,16 @@
             this.label_team.BackColor = System.Drawing.Color.Transparent;
             this.label_team.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_team.ForeColor = System.Drawing.Color.White;
-            this.label_team.Location = new System.Drawing.Point(862, 511);
+            this.label_team.Location = new System.Drawing.Point(862, 434);
             this.label_team.Name = "label_team";
             this.label_team.Size = new System.Drawing.Size(124, 40);
             this.label_team.TabIndex = 12;
             this.label_team.Text = "Team:";
             // 
-            // label_role
-            // 
-            this.label_role.AutoSize = true;
-            this.label_role.BackColor = System.Drawing.Color.Transparent;
-            this.label_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_role.ForeColor = System.Drawing.Color.White;
-            this.label_role.Location = new System.Drawing.Point(871, 434);
-            this.label_role.Name = "label_role";
-            this.label_role.Size = new System.Drawing.Size(106, 40);
-            this.label_role.TabIndex = 11;
-            this.label_role.Text = "Role:";
-            // 
-            // comboBox_role
-            // 
-            this.comboBox_role.FormattingEnabled = true;
-            this.comboBox_role.Location = new System.Drawing.Point(1081, 426);
-            this.comboBox_role.Name = "comboBox_role";
-            this.comboBox_role.Size = new System.Drawing.Size(262, 48);
-            this.comboBox_role.TabIndex = 13;
-            // 
             // comboBox_team
             // 
             this.comboBox_team.FormattingEnabled = true;
-            this.comboBox_team.Location = new System.Drawing.Point(1081, 508);
+            this.comboBox_team.Location = new System.Drawing.Point(1081, 431);
             this.comboBox_team.Name = "comboBox_team";
             this.comboBox_team.Size = new System.Drawing.Size(262, 48);
             this.comboBox_team.TabIndex = 14;
@@ -129,7 +107,7 @@
             // button_signup
             // 
             this.button_signup.ForeColor = System.Drawing.Color.Black;
-            this.button_signup.Location = new System.Drawing.Point(1081, 638);
+            this.button_signup.Location = new System.Drawing.Point(1081, 561);
             this.button_signup.Name = "button_signup";
             this.button_signup.Size = new System.Drawing.Size(189, 71);
             this.button_signup.TabIndex = 15;
@@ -143,7 +121,7 @@
             this.checkBox_showpassword.BackColor = System.Drawing.Color.Transparent;
             this.checkBox_showpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_showpassword.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkBox_showpassword.Location = new System.Drawing.Point(1029, 575);
+            this.checkBox_showpassword.Location = new System.Drawing.Point(1029, 498);
             this.checkBox_showpassword.Name = "checkBox_showpassword";
             this.checkBox_showpassword.Size = new System.Drawing.Size(314, 44);
             this.checkBox_showpassword.TabIndex = 16;
@@ -188,7 +166,7 @@
             this.label_passworddoesntmatch.AutoSize = true;
             this.label_passworddoesntmatch.BackColor = System.Drawing.Color.Transparent;
             this.label_passworddoesntmatch.ForeColor = System.Drawing.Color.Red;
-            this.label_passworddoesntmatch.Location = new System.Drawing.Point(977, 734);
+            this.label_passworddoesntmatch.Location = new System.Drawing.Point(977, 657);
             this.label_passworddoesntmatch.Name = "label_passworddoesntmatch";
             this.label_passworddoesntmatch.Size = new System.Drawing.Size(418, 40);
             this.label_passworddoesntmatch.TabIndex = 20;
@@ -210,9 +188,7 @@
             this.Controls.Add(this.checkBox_showpassword);
             this.Controls.Add(this.button_signup);
             this.Controls.Add(this.comboBox_team);
-            this.Controls.Add(this.comboBox_role);
             this.Controls.Add(this.label_team);
-            this.Controls.Add(this.label_role);
             this.Controls.Add(this.label_password);
             this.Controls.Add(this.textBox_password);
             this.Controls.Add(this.label_username);
@@ -235,8 +211,6 @@
         private System.Windows.Forms.Label label_username;
         private System.Windows.Forms.TextBox textBox_username;
         private System.Windows.Forms.Label label_team;
-        private System.Windows.Forms.Label label_role;
-        private System.Windows.Forms.ComboBox comboBox_role;
         private System.Windows.Forms.ComboBox comboBox_team;
         private System.Windows.Forms.Button button_signup;
         private System.Windows.Forms.CheckBox checkBox_showpassword;
