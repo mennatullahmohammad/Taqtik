@@ -1,0 +1,96 @@
+﻿namespace Taqtik
+{
+    partial class TeamStats
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeamStats));
+            this.dataGridView_teamstats = new System.Windows.Forms.DataGridView();
+            this.label_userteam = new System.Windows.Forms.Label();
+            this.label_stats = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_teamstats)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dataGridView_teamstats
+            // 
+            this.dataGridView_teamstats.AllowUserToAddRows = false;
+            this.dataGridView_teamstats.AllowUserToDeleteRows = false;
+            this.dataGridView_teamstats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_teamstats.Location = new System.Drawing.Point(590, 178);
+            this.dataGridView_teamstats.Name = "dataGridView_teamstats";
+            this.dataGridView_teamstats.ReadOnly = true;
+            this.dataGridView_teamstats.RowHeadersWidth = 62;
+            this.dataGridView_teamstats.RowTemplate.Height = 28;
+            this.dataGridView_teamstats.Size = new System.Drawing.Size(876, 557);
+            this.dataGridView_teamstats.TabIndex = 0;
+            // 
+            // label_userteam
+            // 
+            this.label_userteam.AutoSize = true;
+            this.label_userteam.Location = new System.Drawing.Point(807, 100);
+            this.label_userteam.Name = "label_userteam";
+            this.label_userteam.Size = new System.Drawing.Size(242, 40);
+            this.label_userteam.TabIndex = 1;
+            this.label_userteam.Text = "//user\'s team//";
+            // 
+            // label_stats
+            // 
+            this.label_stats.AutoSize = true;
+            this.label_stats.Location = new System.Drawing.Point(1051, 100);
+            this.label_stats.Name = "label_stats";
+            this.label_stats.Size = new System.Drawing.Size(109, 40);
+            this.label_stats.TabIndex = 2;
+            this.label_stats.Text = "Stats:";
+            // 
+            // TeamStats
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1478, 894);
+            this.Controls.Add(this.label_stats);
+            this.Controls.Add(this.label_userteam);
+            this.Controls.Add(this.dataGridView_teamstats);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.Name = "TeamStats";
+            this.Text = "TeamStats";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_teamstats)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.DataGridView dataGridView_teamstats;
+        private System.Windows.Forms.Label label_userteam;
+        private System.Windows.Forms.Label label_stats;
+    }
+}
