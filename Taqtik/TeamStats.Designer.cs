@@ -81,6 +81,7 @@
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "TeamStats";
             this.Text = "TeamStats";
+            this.Load += new System.EventHandler(this.TeamStats_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_teamstats)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

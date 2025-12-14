@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller.cs" />
+    <Compile Include="DBManager.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +67,12 @@
     </Compile>
     <Compile Include="SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="subscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="subscription.Designer.cs">
+      <DependentUpon>subscription.cs</DependentUpon>
     </Compile>
     <Compile Include="Team.cs">
       <SubType>Form</SubType>
@@ -91,6 +99,9 @@
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="subscription.resx">
+      <DependentUpon>subscription.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Team.resx">
       <DependentUpon>Team.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\WhatsApp Image 2025-12-13 at 15.59.39_50eb6e3a.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-12-13 at 15.59.39_50eb6e3a1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

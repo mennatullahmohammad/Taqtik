@@ -28,5 +28,10 @@ namespace Taqtik
             PlayerStats playerstats = new PlayerStats();
             playerstats.Show();
         }
+
+        private void Team_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

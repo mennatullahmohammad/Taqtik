@@ -16,5 +16,10 @@ namespace Taqtik
         {
             InitializeComponent();
         }
+
+        private void TeamStats_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Taqtik
 {
-    public partial class PlayerStats : Form
+    public partial class subscription : Form
     {
-        public PlayerStats()
+        public subscription()
         {
             InitializeComponent();
         }
 
-        private void PlayerStats_Load(object sender, EventArgs e)
+        private void subscription_Load(object sender, EventArgs e)
         {
 
         }

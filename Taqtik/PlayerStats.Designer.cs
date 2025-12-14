@@ -97,6 +97,7 @@
             this.Name = "PlayerStats";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PlayerStats";
+            this.Load += new System.EventHandler(this.PlayerStats_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_playerstats)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
