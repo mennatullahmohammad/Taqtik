@@ -18,7 +18,12 @@ namespace Taqtik
         {
             dbMan.CloseConnection();
         }
+        public int CheckLogin(string username, string password)
+        {
+            string query = "SELECT COUNT(*) FROM Users WHERE Username = '" + username + "' AND Password = '" + password + "';";
 
+            return (int)dbMan.ExecuteScalar(query);
+        }
 
 
 

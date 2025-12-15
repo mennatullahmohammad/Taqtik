@@ -48,7 +48,7 @@
             this.label_taqtik.ForeColor = System.Drawing.Color.White;
             this.label_taqtik.Location = new System.Drawing.Point(1008, 160);
             this.label_taqtik.Name = "label_taqtik";
-            this.label_taqtik.Size = new System.Drawing.Size(318, 88);
+            this.label_taqtik.Size = new System.Drawing.Size(268, 74);
             this.label_taqtik.TabIndex = 0;
             this.label_taqtik.Text = "TAQTIK";
             // 
@@ -57,8 +57,9 @@
             this.textBox_username.BackColor = System.Drawing.Color.White;
             this.textBox_username.Location = new System.Drawing.Point(1101, 296);
             this.textBox_username.Name = "textBox_username";
-            this.textBox_username.Size = new System.Drawing.Size(262, 48);
+            this.textBox_username.Size = new System.Drawing.Size(262, 41);
             this.textBox_username.TabIndex = 1;
+            this.textBox_username.TextChanged += new System.EventHandler(this.textBox_username_TextChanged);
             // 
             // checkBox_showpassword
             // 
@@ -68,7 +69,7 @@
             this.checkBox_showpassword.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.checkBox_showpassword.Location = new System.Drawing.Point(1101, 429);
             this.checkBox_showpassword.Name = "checkBox_showpassword";
-            this.checkBox_showpassword.Size = new System.Drawing.Size(314, 44);
+            this.checkBox_showpassword.Size = new System.Drawing.Size(266, 40);
             this.checkBox_showpassword.TabIndex = 2;
             this.checkBox_showpassword.Text = "Show Password";
             this.checkBox_showpassword.UseVisualStyleBackColor = false;
@@ -92,7 +93,7 @@
             this.label_username.ForeColor = System.Drawing.Color.White;
             this.label_username.Location = new System.Drawing.Point(893, 296);
             this.label_username.Name = "label_username";
-            this.label_username.Size = new System.Drawing.Size(202, 40);
+            this.label_username.Size = new System.Drawing.Size(167, 36);
             this.label_username.TabIndex = 4;
             this.label_username.Text = "Username:";
             // 
@@ -104,7 +105,7 @@
             this.label_password.ForeColor = System.Drawing.Color.White;
             this.label_password.Location = new System.Drawing.Point(893, 363);
             this.label_password.Name = "label_password";
-            this.label_password.Size = new System.Drawing.Size(194, 40);
+            this.label_password.Size = new System.Drawing.Size(164, 36);
             this.label_password.TabIndex = 6;
             this.label_password.Text = "Password:";
             // 
@@ -113,7 +114,7 @@
             this.textBox_password.BackColor = System.Drawing.Color.White;
             this.textBox_password.Location = new System.Drawing.Point(1101, 360);
             this.textBox_password.Name = "textBox_password";
-            this.textBox_password.Size = new System.Drawing.Size(262, 48);
+            this.textBox_password.Size = new System.Drawing.Size(262, 41);
             this.textBox_password.TabIndex = 5;
             this.textBox_password.UseSystemPasswordChar = true;
             // 
@@ -135,14 +136,14 @@
             this.label_incorrect.ForeColor = System.Drawing.Color.Red;
             this.label_incorrect.Location = new System.Drawing.Point(969, 634);
             this.label_incorrect.Name = "label_incorrect";
-            this.label_incorrect.Size = new System.Drawing.Size(424, 32);
+            this.label_incorrect.Size = new System.Drawing.Size(364, 29);
             this.label_incorrect.TabIndex = 8;
             this.label_incorrect.Text = "Incorrect username or password!";
             this.label_incorrect.Visible = false;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
