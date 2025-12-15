@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMatch.Designer.cs">
+      <DependentUpon>AddMatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddSubs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSubs.Designer.cs">
+      <DependentUpon>AddSubs.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,12 +71,24 @@
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller.cs" />
+    <Compile Include="DataEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataEntry.Designer.cs">
+      <DependentUpon>DataEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBManager.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Match.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Match.Designer.cs">
+      <DependentUpon>Match.cs</DependentUpon>
     </Compile>
     <Compile Include="PlayerStats.cs">
       <SubType>Form</SubType>
@@ -79,6 +103,12 @@
     </Compile>
     <Compile Include="SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subs.Designer.cs">
+      <DependentUpon>Subs.cs</DependentUpon>
     </Compile>
     <Compile Include="subscription.cs">
       <SubType>Form</SubType>
@@ -98,14 +128,26 @@
     <Compile Include="TeamStats.Designer.cs">
       <DependentUpon>TeamStats.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddMatch.resx">
+      <DependentUpon>AddMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddSubs.resx">
+      <DependentUpon>AddSubs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddUser.resx">
       <DependentUpon>AddUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataEntry.resx">
+      <DependentUpon>DataEntry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Match.resx">
+      <DependentUpon>Match.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerStats.resx">
       <DependentUpon>PlayerStats.cs</DependentUpon>
@@ -116,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subs.resx">
+      <DependentUpon>Subs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="subscription.resx">
       <DependentUpon>subscription.cs</DependentUpon>
