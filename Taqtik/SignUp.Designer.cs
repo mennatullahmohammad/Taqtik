@@ -51,7 +51,7 @@
             this.label_password.ForeColor = System.Drawing.Color.White;
             this.label_password.Location = new System.Drawing.Point(827, 271);
             this.label_password.Name = "label_password";
-            this.label_password.Size = new System.Drawing.Size(194, 40);
+            this.label_password.Size = new System.Drawing.Size(164, 36);
             this.label_password.TabIndex = 10;
             this.label_password.Text = "Password:";
             // 
@@ -60,9 +60,10 @@
             this.textBox_password.BackColor = System.Drawing.Color.White;
             this.textBox_password.Location = new System.Drawing.Point(1081, 271);
             this.textBox_password.Name = "textBox_password";
-            this.textBox_password.Size = new System.Drawing.Size(262, 48);
+            this.textBox_password.Size = new System.Drawing.Size(262, 41);
             this.textBox_password.TabIndex = 9;
             this.textBox_password.UseSystemPasswordChar = true;
+            this.textBox_password.TextChanged += new System.EventHandler(this.textBox_password_TextChanged);
             // 
             // label_username
             // 
@@ -72,7 +73,7 @@
             this.label_username.ForeColor = System.Drawing.Color.White;
             this.label_username.Location = new System.Drawing.Point(827, 190);
             this.label_username.Name = "label_username";
-            this.label_username.Size = new System.Drawing.Size(202, 40);
+            this.label_username.Size = new System.Drawing.Size(167, 36);
             this.label_username.TabIndex = 8;
             this.label_username.Text = "Username:";
             // 
@@ -81,7 +82,7 @@
             this.textBox_username.BackColor = System.Drawing.Color.White;
             this.textBox_username.Location = new System.Drawing.Point(1081, 193);
             this.textBox_username.Name = "textBox_username";
-            this.textBox_username.Size = new System.Drawing.Size(262, 48);
+            this.textBox_username.Size = new System.Drawing.Size(262, 41);
             this.textBox_username.TabIndex = 7;
             // 
             // label_team
@@ -92,7 +93,7 @@
             this.label_team.ForeColor = System.Drawing.Color.White;
             this.label_team.Location = new System.Drawing.Point(862, 434);
             this.label_team.Name = "label_team";
-            this.label_team.Size = new System.Drawing.Size(124, 40);
+            this.label_team.Size = new System.Drawing.Size(101, 36);
             this.label_team.TabIndex = 12;
             this.label_team.Text = "Team:";
             // 
@@ -101,7 +102,7 @@
             this.comboBox_team.FormattingEnabled = true;
             this.comboBox_team.Location = new System.Drawing.Point(1081, 431);
             this.comboBox_team.Name = "comboBox_team";
-            this.comboBox_team.Size = new System.Drawing.Size(262, 48);
+            this.comboBox_team.Size = new System.Drawing.Size(262, 44);
             this.comboBox_team.TabIndex = 14;
             // 
             // button_signup
@@ -123,7 +124,7 @@
             this.checkBox_showpassword.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.checkBox_showpassword.Location = new System.Drawing.Point(1029, 498);
             this.checkBox_showpassword.Name = "checkBox_showpassword";
-            this.checkBox_showpassword.Size = new System.Drawing.Size(314, 44);
+            this.checkBox_showpassword.Size = new System.Drawing.Size(266, 40);
             this.checkBox_showpassword.TabIndex = 16;
             this.checkBox_showpassword.Text = "Show Password";
             this.checkBox_showpassword.UseVisualStyleBackColor = false;
@@ -137,7 +138,7 @@
             this.label_confirmpassword.ForeColor = System.Drawing.Color.White;
             this.label_confirmpassword.Location = new System.Drawing.Point(737, 356);
             this.label_confirmpassword.Name = "label_confirmpassword";
-            this.label_confirmpassword.Size = new System.Drawing.Size(338, 40);
+            this.label_confirmpassword.Size = new System.Drawing.Size(283, 36);
             this.label_confirmpassword.TabIndex = 18;
             this.label_confirmpassword.Text = "Confirm Password:";
             // 
@@ -146,7 +147,7 @@
             this.textBox_confirmpassword.BackColor = System.Drawing.Color.White;
             this.textBox_confirmpassword.Location = new System.Drawing.Point(1081, 353);
             this.textBox_confirmpassword.Name = "textBox_confirmpassword";
-            this.textBox_confirmpassword.Size = new System.Drawing.Size(262, 48);
+            this.textBox_confirmpassword.Size = new System.Drawing.Size(262, 41);
             this.textBox_confirmpassword.TabIndex = 17;
             this.textBox_confirmpassword.UseSystemPasswordChar = true;
             // 
@@ -157,7 +158,7 @@
             this.label_signup.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_signup.Location = new System.Drawing.Point(1005, 99);
             this.label_signup.Name = "label_signup";
-            this.label_signup.Size = new System.Drawing.Size(202, 59);
+            this.label_signup.Size = new System.Drawing.Size(171, 52);
             this.label_signup.TabIndex = 19;
             this.label_signup.Text = "SignUp";
             // 
@@ -168,14 +169,14 @@
             this.label_passworddoesntmatch.ForeColor = System.Drawing.Color.Red;
             this.label_passworddoesntmatch.Location = new System.Drawing.Point(977, 657);
             this.label_passworddoesntmatch.Name = "label_passworddoesntmatch";
-            this.label_passworddoesntmatch.Size = new System.Drawing.Size(418, 40);
+            this.label_passworddoesntmatch.Size = new System.Drawing.Size(346, 36);
             this.label_passworddoesntmatch.TabIndex = 20;
             this.label_passworddoesntmatch.Text = "Password doesn\'t match!";
             this.label_passworddoesntmatch.Visible = false;
             // 
             // SignUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
