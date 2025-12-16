@@ -221,6 +221,7 @@
             this.Name = "AddMatch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddMatch";
+            this.Load += new System.EventHandler(this.AddMatch_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
