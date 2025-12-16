@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Globalization;
@@ -77,6 +77,33 @@ namespace Taqtik
             string query = "SELECT referee_id, name FROM Referee;";
             return dbMan.ExecuteReader(query);
         }
+        public DataTable SelectAllPlayers()
+        {
+            string query = "SELECT player_id,name FROM Player;";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectTeamByUsername(string username)
+        {
+            string query = "SELECT T.team_id, T.name, T.country, T.year_founded " +
+                           "FROM Team T " +
+                           "JOIN UserTeamAccess A ON T.team_id = A.team_id " +
+                           "JOIN Users U ON U.user_id = A.user_id " +
+                           "WHERE U.name = '" + username + "';";
+
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectRoleByUsername(string username)
+        {
+            string query = "SELECT role FROM Users WHERE name= '" + username + "'; ";
+
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectGoals(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E " +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Goal'";
+            return dbMan.ExecuteReader(query);
         public DataTable SelectGameWeeks(int seasonId, int competitionId)
         {
             string query =
