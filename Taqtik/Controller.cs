@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Globalization;
@@ -104,6 +104,73 @@ namespace Taqtik
                 "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
                 "WHERE E.player_id = " + playerid + " AND ET.name = 'Goal'";
             return dbMan.ExecuteReader(query);
+        public DataTable SelectGameWeeks(int seasonId, int competitionId)
+        {
+            string query =
+                "SELECT gw.gameweek_id " +
+                "FROM GameWeek gw " +
+                "INNER JOIN CompetitionInstance ci ON ci.season_competition_id = gw.season_competition_id " +
+                "WHERE ci.season_id = " + seasonId + " " +
+                "AND ci.competition_id = " + competitionId + " " +
+                "ORDER BY gw.gameweek_id;";
+
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectGameWeeksBySeasonCompetitionId(int seasonCompetitionId)
+        {
+            string query =
+                "SELECT gameweek_id " +
+                "FROM GameWeek " +
+                "WHERE season_competition_id = " + seasonCompetitionId + " " +
+                "ORDER BY gameweek_id;";
+
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int GetSeasonCompetitionId(int seasonId, int competitionId)
+        {
+            string query =
+                "SELECT season_competition_id " +
+                "FROM CompetitionInstance " +
+                "WHERE season_id = " + seasonId +
+                " AND competition_id = " + competitionId + ";";
+
+            object result = dbMan.ExecuteScalar(query);
+
+            if (result == null || result == DBNull.Value)
+                return -1;
+
+            return Convert.ToInt32(result);
+        }
+        public int InsertMatch(int gameweekId,int seasonCompetitionId,int refereeId,string venue)
+        {
+            string query =
+                "INSERT INTO Match (gameweek_id, season_competition_id, referee_id, Venue) " +
+                "VALUES (" +
+                gameweekId + ", " +
+                seasonCompetitionId + ", " +
+                refereeId + ", " +
+                (string.IsNullOrEmpty(venue) ? "NULL" : "'" + venue + "'") +
+                "); " +
+                "SELECT SCOPE_IDENTITY();";
+
+            object result = dbMan.ExecuteScalar(query);
+
+            if (result == null || result == DBNull.Value)
+                return -1;
+
+            return Convert.ToInt32(result);
+        }
+        public int InsertMatchTeam(int matchId, int teamId, bool isHome)
+        {
+            string query =
+                "INSERT INTO MatchTeams (match_id, team_id, is_home) VALUES (" +
+                matchId + ", " +
+                teamId + ", " +
+                (isHome ? 1 : 0) +
+                ");";
+
+            return dbMan.ExecuteNonQuery(query);
         }
 
     }
