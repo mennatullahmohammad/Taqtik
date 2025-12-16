@@ -61,6 +61,16 @@ namespace Taqtik
             string query = "SELECT team_id, name FROM Team;";
             return dbMan.ExecuteReader(query);
         }
+        public DataTable SelectTeamByUsername(string username)
+        {
+            string query = "SELECT T.team_id, T.name, T.country, T.year_founded " +
+                           "FROM Team T " +
+                           "JOIN UserTeamAccess A ON T.team_id = A.team_id " +
+                           "JOIN Users U ON U.user_id = A.user_id " +
+                           "WHERE U.name = '" + username + "';";
+
+            return dbMan.ExecuteReader(query);
+        }
 
 
     }

@@ -12,14 +12,16 @@ namespace Taqtik
 {
     public partial class Team : Form
     {
-        public Team()
+        private string _currentUsername;
+        public Team(string username)
         {
             InitializeComponent();
+            _currentUsername= username;
         }
 
         private void button_teamstats_Click(object sender, EventArgs e)
         {
-            TeamStats teamstats = new TeamStats();
+            TeamStats teamstats = new TeamStats(_currentUsername);
             teamstats.Show();
         }
 
@@ -30,6 +32,11 @@ namespace Taqtik
         }
 
         private void Team_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
