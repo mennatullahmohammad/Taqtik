@@ -37,8 +37,8 @@ namespace Taqtik
             }
             else
             {
-                string queryUser = "INSERT INTO Users (name, password_hash, role, is_subscribed) " +
-                           "VALUES ('" + name + "','" + password + "','" + role + "', 0); " +
+                string queryUser = "INSERT INTO Users (name, password_hash, role) " +
+                           "VALUES ('" + name + "','" + password + "','" + role + "'); " +
                            "SELECT SCOPE_IDENTITY();";
 
                 object result = dbMan.ExecuteScalar(queryUser);
@@ -56,6 +56,7 @@ namespace Taqtik
 
             return 0; 
         }
+
         public DataTable SelectAllTeams()
         {
             string query = "SELECT team_id, name FROM Team;";
@@ -76,5 +77,28 @@ namespace Taqtik
             string query = "SELECT referee_id, name FROM Referee;";
             return dbMan.ExecuteReader(query);
         }
+        public DataTable SelectAllPlayers()
+        {
+            string query = "SELECT player_id,name FROM Player;";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectTeamByUsername(string username)
+        {
+            string query = "SELECT T.team_id, T.name, T.country, T.year_founded " +
+                           "FROM Team T " +
+                           "JOIN UserTeamAccess A ON T.team_id = A.team_id " +
+                           "JOIN Users U ON U.user_id = A.user_id " +
+                           "WHERE U.name = '" + username + "';";
+
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectGoals(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E" +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Goal'";
+            return dbMan.ExecuteReader(query);
+        }
+
     }
 }

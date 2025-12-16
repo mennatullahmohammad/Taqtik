@@ -50,7 +50,7 @@ namespace Taqtik
             }
             else if (count == 1) {
                 //go to team form
-                Team team = new Team();
+                Team team = new Team(username);
                 team.Show();
             }
             else
