@@ -13,7 +13,8 @@ namespace Taqtik
     public partial class Team : Form
     {
         Controller controllerObj = new Controller();
-        public Team()
+        private string Username;
+        public Team(string user)
         {
             InitializeComponent();
             DataTable dt = controllerObj.SelectAllTeams();
@@ -26,11 +27,13 @@ namespace Taqtik
             comboBox2.DisplayMember = "name";
             comboBox2.ValueMember = "team_id";
 
+            Username = user;
+
         }
 
         private void button_teamstats_Click(object sender, EventArgs e)
         {
-            TeamStats teamstats = new TeamStats();
+            TeamStats teamstats = new TeamStats(Username);
             teamstats.Show();
         }
 

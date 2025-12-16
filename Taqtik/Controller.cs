@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlTypes;
 using System.Globalization;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Taqtik;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -54,6 +55,36 @@ namespace Taqtik
             return 0; 
         }
 
+        public int AddTeam(string team, string usern)
+        {
+            string queryUser = "SELECT user_id FROM Users WHERE name = " + usern + ";";
+            string queryTeam = "SELECT team_id FROM Team WHERE name = " + team + ";";
+
+            object result = dbMan.ExecuteScalar(queryUser);
+            object result2 = dbMan.ExecuteScalar(queryTeam);
+
+            int UserId = Convert.ToInt32(result);
+            int teamId = Convert.ToInt32(result2);
+
+            string queryTeamAccess = "SELECT team_id, user_id FROM UserTeamAccess WHERE user_id = " + UserId + " AND team_id = " + teamId + ";";
+
+            int result3 = (int)dbMan.ExecuteScalar(queryTeamAccess);
+
+            if(result3 == 0)
+            {
+                return -1;
+            }
+
+            else if (result != null && result2 != null)
+            {
+                
+                string queryAccess = "INSERT INTO UserTeamAccess (user_id, team_id) " +
+                                     "VALUES (" + UserId + ", " + teamId + ");";
+                return dbMan.ExecuteNonQuery(queryAccess);
+            }
+            return 0;
+        }
+
         public DataTable SelectAllTeams()
         {
             string query = "SELECT team_id, name FROM Team;";
@@ -102,8 +133,6 @@ namespace Taqtik
                 "WHERE E.player_id = " + playerid + " AND ET.name = 'Goal'";
             return dbMan.ExecuteReader(query);
         }
-
-        public 
 
     }
 }

@@ -12,9 +12,19 @@ namespace Taqtik
 {
     public partial class subscription : Form
     {
-        public subscription()
+        Controller controllerObj = new Controller();
+        private string currUsername;
+        public subscription(string user)
         {
             InitializeComponent();
+
+            DataTable dt = controllerObj.SelectAllTeams();
+
+            comboBox1.DataSource = dt;
+            comboBox1.DisplayMember = "name";
+            comboBox1.ValueMember = "team_id";
+
+            currUsername = user;
         }
 
         private void subscription_Load(object sender, EventArgs e)
@@ -25,6 +35,20 @@ namespace Taqtik
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int result = controllerObj.AddTeam(currUsername, comboBox1.Text);
+
+            if (result > 0)
+            {
+                MessageBox.Show("Team Successfully added!");
+            }
+            else if (result < 0)
+            {
+                MessageBox.Show("Team already exists.");
+            }
         }
     }
 }
