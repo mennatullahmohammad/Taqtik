@@ -49,9 +49,25 @@ namespace Taqtik
                 MessageBox.Show("Username or Password incorrect.");
             }
             else if (count == 1) {
-                //go to team form
-                Team team = new Team();
-                team.Show();
+                //go to form
+                DataTable dt = controllerObj.SelectRoleByUsername(username);
+                string role = dt.Rows[0]["role"].ToString();
+                if (role == "Analyst")
+                {
+                    Team team = new Team(username);
+                    team.Show();
+
+                }
+                else if(role == "Admin")
+                {
+                    Admin admin = new Admin();
+                    admin.Show();
+                }
+                else if (role == "DataEntry")
+                {
+                    DataEntry dataentry= new DataEntry();
+                    dataentry.Show();
+                }
             }
             else
             {

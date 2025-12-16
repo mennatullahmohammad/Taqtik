@@ -47,28 +47,30 @@
             this.dataGridView_teamstats.RowTemplate.Height = 28;
             this.dataGridView_teamstats.Size = new System.Drawing.Size(876, 557);
             this.dataGridView_teamstats.TabIndex = 0;
+            this.dataGridView_teamstats.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_teamstats_CellContentClick);
             // 
             // label_userteam
             // 
             this.label_userteam.AutoSize = true;
             this.label_userteam.Location = new System.Drawing.Point(807, 100);
             this.label_userteam.Name = "label_userteam";
-            this.label_userteam.Size = new System.Drawing.Size(242, 40);
+            this.label_userteam.Size = new System.Drawing.Size(197, 36);
             this.label_userteam.TabIndex = 1;
             this.label_userteam.Text = "//user\'s team//";
+            this.label_userteam.Click += new System.EventHandler(this.label_userteam_Click);
             // 
             // label_stats
             // 
             this.label_stats.AutoSize = true;
             this.label_stats.Location = new System.Drawing.Point(1051, 100);
             this.label_stats.Name = "label_stats";
-            this.label_stats.Size = new System.Drawing.Size(109, 40);
+            this.label_stats.Size = new System.Drawing.Size(90, 36);
             this.label_stats.TabIndex = 2;
             this.label_stats.Text = "Stats:";
             // 
             // TeamStats
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));

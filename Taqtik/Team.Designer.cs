@@ -48,13 +48,14 @@
             this.button_showteam.TabIndex = 17;
             this.button_showteam.Text = "Show Team";
             this.button_showteam.UseVisualStyleBackColor = true;
+            this.button_showteam.Click += new System.EventHandler(this.button_showteam_Click);
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(837, 577);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(361, 48);
+            this.comboBox2.Size = new System.Drawing.Size(361, 44);
             this.comboBox2.TabIndex = 16;
             // 
             // label3
@@ -65,7 +66,7 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(441, 576);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(377, 46);
+            this.label3.Size = new System.Drawing.Size(320, 39);
             this.label3.TabIndex = 15;
             this.label3.Text = "Show another team:";
             // 
@@ -77,6 +78,7 @@
             this.button_showmatch.TabIndex = 14;
             this.button_showmatch.Text = "Show Match";
             this.button_showmatch.UseVisualStyleBackColor = true;
+            this.button_showmatch.Click += new System.EventHandler(this.button_showmatch_Click);
             // 
             // label2
             // 
@@ -86,7 +88,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(437, 461);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(381, 46);
+            this.label2.Size = new System.Drawing.Size(323, 39);
             this.label2.TabIndex = 13;
             this.label2.Text = "Match Stats against:";
             // 
@@ -105,7 +107,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(837, 462);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(361, 48);
+            this.comboBox1.Size = new System.Drawing.Size(361, 44);
             this.comboBox1.TabIndex = 11;
             // 
             // button_teamstats
@@ -123,13 +125,14 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(827, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(543, 40);
+            this.label1.Size = new System.Drawing.Size(446, 36);
             this.label1.TabIndex = 9;
             this.label1.Text = "//User team should appear hear//";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Team
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
