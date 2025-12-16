@@ -46,17 +46,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add Referee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add Referee.Designer.cs">
+      <DependentUpon>Add Referee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddCompetition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCompetition.Designer.cs">
+      <DependentUpon>AddCompetition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddCompetitionInstance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCompetitionInstance.Designer.cs">
+      <DependentUpon>AddCompetitionInstance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEvent.Designer.cs">
+      <DependentUpon>AddEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddMatch.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddMatch.Designer.cs">
       <DependentUpon>AddMatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPlayer.Designer.cs">
+      <DependentUpon>AddPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddSeason.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSeason.Designer.cs">
+      <DependentUpon>AddSeason.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddSubs.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddSubs.Designer.cs">
       <DependentUpon>AddSubs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTeam.Designer.cs">
+      <DependentUpon>AddTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddTeamtoCompetition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTeamtoCompetition.Designer.cs">
+      <DependentUpon>AddTeamtoCompetition.cs</DependentUpon>
     </Compile>
     <Compile Include="AddUser.cs">
       <SubType>Form</SubType>
@@ -133,11 +181,35 @@
     <Compile Include="TeamStats.Designer.cs">
       <DependentUpon>TeamStats.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Add Referee.resx">
+      <DependentUpon>Add Referee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddCompetition.resx">
+      <DependentUpon>AddCompetition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddCompetitionInstance.resx">
+      <DependentUpon>AddCompetitionInstance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddEvent.resx">
+      <DependentUpon>AddEvent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddMatch.resx">
       <DependentUpon>AddMatch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddPlayer.resx">
+      <DependentUpon>AddPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddSeason.resx">
+      <DependentUpon>AddSeason.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddSubs.resx">
       <DependentUpon>AddSubs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTeam.resx">
+      <DependentUpon>AddTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTeamtoCompetition.resx">
+      <DependentUpon>AddTeamtoCompetition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddUser.resx">
       <DependentUpon>AddUser.cs</DependentUpon>
