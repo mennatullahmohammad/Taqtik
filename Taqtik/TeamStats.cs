@@ -12,12 +12,37 @@ namespace Taqtik
 {
     public partial class TeamStats : Form
     {
-        public TeamStats()
+        Controller controllerObj = new Controller();
+        private string _currentUsername;
+        public TeamStats(string username)
         {
             InitializeComponent();
+            _currentUsername = username; // Store it for later
         }
 
         private void TeamStats_Load(object sender, EventArgs e)
+        {
+            DataTable dt = controllerObj.SelectTeamByUsername(_currentUsername);
+
+            dataGridView_teamstats.DataSource = dt;
+            dataGridView_teamstats.Refresh();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                string teamName = dt.Rows[0]["name"].ToString(); //default team at row 0
+                label_userteam.Text = teamName;
+            }
+            else
+            {
+                label_userteam.Text = "No Team Assigned";
+            }
+        }
+
+        private void dataGridView_teamstats_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label_userteam_Click(object sender, EventArgs e)
         {
 
         }

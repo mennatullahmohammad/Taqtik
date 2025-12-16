@@ -128,6 +128,7 @@
             this.label1.Size = new System.Drawing.Size(446, 36);
             this.label1.TabIndex = 9;
             this.label1.Text = "//User team should appear hear//";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Team
             // 

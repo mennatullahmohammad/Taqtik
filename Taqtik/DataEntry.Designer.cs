@@ -33,7 +33,13 @@
             this.button_addMatch = new System.Windows.Forms.Button();
             this.label_username = new System.Windows.Forms.Label();
             this.button_addEvent = new System.Windows.Forms.Button();
-            this.button_addPlayerStats = new System.Windows.Forms.Button();
+            this.button_addPlayer = new System.Windows.Forms.Button();
+            this.buttonaddteam = new System.Windows.Forms.Button();
+            this.buttonaddseason = new System.Windows.Forms.Button();
+            this.buttoncompetition = new System.Windows.Forms.Button();
+            this.buttonreferee = new System.Windows.Forms.Button();
+            this.buttoncompinstance = new System.Windows.Forms.Button();
+            this.buttongw = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_welcome
@@ -44,13 +50,13 @@
             this.label_welcome.ForeColor = System.Drawing.Color.White;
             this.label_welcome.Location = new System.Drawing.Point(818, 93);
             this.label_welcome.Name = "label_welcome";
-            this.label_welcome.Size = new System.Drawing.Size(212, 52);
+            this.label_welcome.Size = new System.Drawing.Size(180, 42);
             this.label_welcome.TabIndex = 0;
             this.label_welcome.Text = "Welcome";
             // 
             // button_addMatch
             // 
-            this.button_addMatch.Location = new System.Drawing.Point(813, 243);
+            this.button_addMatch.Location = new System.Drawing.Point(813, 172);
             this.button_addMatch.Name = "button_addMatch";
             this.button_addMatch.Size = new System.Drawing.Size(202, 68);
             this.button_addMatch.TabIndex = 1;
@@ -66,36 +72,96 @@
             this.label_username.ForeColor = System.Drawing.Color.White;
             this.label_username.Location = new System.Drawing.Point(1077, 93);
             this.label_username.Name = "label_username";
-            this.label_username.Size = new System.Drawing.Size(276, 52);
+            this.label_username.Size = new System.Drawing.Size(236, 42);
             this.label_username.TabIndex = 2;
             this.label_username.Text = "//username//";
             // 
             // button_addEvent
             // 
-            this.button_addEvent.Location = new System.Drawing.Point(1117, 243);
+            this.button_addEvent.Location = new System.Drawing.Point(1111, 172);
             this.button_addEvent.Name = "button_addEvent";
             this.button_addEvent.Size = new System.Drawing.Size(202, 68);
             this.button_addEvent.TabIndex = 3;
             this.button_addEvent.Text = "Add Event";
             this.button_addEvent.UseVisualStyleBackColor = true;
             // 
-            // button_addPlayerStats
+            // button_addPlayer
             // 
-            this.button_addPlayerStats.Location = new System.Drawing.Point(813, 362);
-            this.button_addPlayerStats.Name = "button_addPlayerStats";
-            this.button_addPlayerStats.Size = new System.Drawing.Size(202, 101);
-            this.button_addPlayerStats.TabIndex = 4;
-            this.button_addPlayerStats.Text = "Add Player Stats";
-            this.button_addPlayerStats.UseVisualStyleBackColor = true;
+            this.button_addPlayer.Location = new System.Drawing.Point(813, 270);
+            this.button_addPlayer.Name = "button_addPlayer";
+            this.button_addPlayer.Size = new System.Drawing.Size(202, 101);
+            this.button_addPlayer.TabIndex = 4;
+            this.button_addPlayer.Text = "Add Player ";
+            this.button_addPlayer.UseVisualStyleBackColor = true;
+            // 
+            // buttonaddteam
+            // 
+            this.buttonaddteam.Location = new System.Drawing.Point(1111, 270);
+            this.buttonaddteam.Name = "buttonaddteam";
+            this.buttonaddteam.Size = new System.Drawing.Size(202, 101);
+            this.buttonaddteam.TabIndex = 5;
+            this.buttonaddteam.Text = "Add Team";
+            this.buttonaddteam.UseVisualStyleBackColor = true;
+            // 
+            // buttonaddseason
+            // 
+            this.buttonaddseason.Location = new System.Drawing.Point(813, 401);
+            this.buttonaddseason.Name = "buttonaddseason";
+            this.buttonaddseason.Size = new System.Drawing.Size(202, 101);
+            this.buttonaddseason.TabIndex = 6;
+            this.buttonaddseason.Text = "Add Season";
+            this.buttonaddseason.UseVisualStyleBackColor = true;
+            // 
+            // buttoncompetition
+            // 
+            this.buttoncompetition.Location = new System.Drawing.Point(1111, 401);
+            this.buttoncompetition.Name = "buttoncompetition";
+            this.buttoncompetition.Size = new System.Drawing.Size(202, 101);
+            this.buttoncompetition.TabIndex = 7;
+            this.buttoncompetition.Text = "Add Competition";
+            this.buttoncompetition.UseVisualStyleBackColor = true;
+            // 
+            // buttonreferee
+            // 
+            this.buttonreferee.Location = new System.Drawing.Point(813, 523);
+            this.buttonreferee.Name = "buttonreferee";
+            this.buttonreferee.Size = new System.Drawing.Size(202, 101);
+            this.buttonreferee.TabIndex = 8;
+            this.buttonreferee.Text = "Add Referee";
+            this.buttonreferee.UseVisualStyleBackColor = true;
+            // 
+            // buttoncompinstance
+            // 
+            this.buttoncompinstance.Location = new System.Drawing.Point(813, 654);
+            this.buttoncompinstance.Name = "buttoncompinstance";
+            this.buttoncompinstance.Size = new System.Drawing.Size(500, 101);
+            this.buttoncompinstance.TabIndex = 9;
+            this.buttoncompinstance.Text = "Add Competition Instance";
+            this.buttoncompinstance.UseVisualStyleBackColor = true;
+            // 
+            // buttongw
+            // 
+            this.buttongw.Location = new System.Drawing.Point(1111, 523);
+            this.buttongw.Name = "buttongw";
+            this.buttongw.Size = new System.Drawing.Size(202, 101);
+            this.buttongw.TabIndex = 10;
+            this.buttongw.Text = "Add Gameweek";
+            this.buttongw.UseVisualStyleBackColor = true;
             // 
             // DataEntry
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1478, 844);
-            this.Controls.Add(this.button_addPlayerStats);
+            this.Controls.Add(this.buttongw);
+            this.Controls.Add(this.buttoncompinstance);
+            this.Controls.Add(this.buttonreferee);
+            this.Controls.Add(this.buttoncompetition);
+            this.Controls.Add(this.buttonaddseason);
+            this.Controls.Add(this.buttonaddteam);
+            this.Controls.Add(this.button_addPlayer);
             this.Controls.Add(this.button_addEvent);
             this.Controls.Add(this.label_username);
             this.Controls.Add(this.button_addMatch);
@@ -116,6 +182,12 @@
         private System.Windows.Forms.Button button_addMatch;
         private System.Windows.Forms.Label label_username;
         private System.Windows.Forms.Button button_addEvent;
-        private System.Windows.Forms.Button button_addPlayerStats;
+        private System.Windows.Forms.Button button_addPlayer;
+        private System.Windows.Forms.Button buttonaddteam;
+        private System.Windows.Forms.Button buttonaddseason;
+        private System.Windows.Forms.Button buttoncompetition;
+        private System.Windows.Forms.Button buttonreferee;
+        private System.Windows.Forms.Button buttoncompinstance;
+        private System.Windows.Forms.Button buttongw;
     }
 }

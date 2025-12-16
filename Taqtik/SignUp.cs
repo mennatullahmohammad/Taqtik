@@ -79,5 +79,10 @@ namespace Taqtik
         {
 
         }
+
+        private void comboBox_team_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
