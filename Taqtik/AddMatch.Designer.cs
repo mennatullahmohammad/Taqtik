@@ -44,6 +44,8 @@
             this.comboBoxseason = new System.Windows.Forms.ComboBox();
             this.labelCompetition = new System.Windows.Forms.Label();
             this.comboBoxcompetition = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label_gameweek
@@ -85,7 +87,7 @@
             this.button_addMatch.TabIndex = 68;
             this.button_addMatch.Text = "Add Match";
             this.button_addMatch.UseVisualStyleBackColor = false;
-            this.button_addMatch.Click += new System.EventHandler(this.button_addSubs_Click);
+            this.button_addMatch.Click += new System.EventHandler(this.button_addmatch_Click);
             // 
             // comboBox_referee
             // 
@@ -140,7 +142,7 @@
             // comboBoxawayteam
             // 
             this.comboBoxawayteam.FormattingEnabled = true;
-            this.comboBoxawayteam.Location = new System.Drawing.Point(708, 279);
+            this.comboBoxawayteam.Location = new System.Drawing.Point(705, 260);
             this.comboBoxawayteam.Name = "comboBoxawayteam";
             this.comboBoxawayteam.Size = new System.Drawing.Size(128, 44);
             this.comboBoxawayteam.TabIndex = 74;
@@ -149,7 +151,7 @@
             // 
             this.labelawayteam.AutoSize = true;
             this.labelawayteam.BackColor = System.Drawing.Color.Transparent;
-            this.labelawayteam.Location = new System.Drawing.Point(521, 287);
+            this.labelawayteam.Location = new System.Drawing.Point(521, 263);
             this.labelawayteam.Name = "labelawayteam";
             this.labelawayteam.Size = new System.Drawing.Size(178, 36);
             this.labelawayteam.TabIndex = 75;
@@ -172,6 +174,7 @@
             this.comboBoxseason.Name = "comboBoxseason";
             this.comboBoxseason.Size = new System.Drawing.Size(128, 44);
             this.comboBoxseason.TabIndex = 77;
+            this.comboBoxseason.SelectedIndexChanged += new System.EventHandler(this.comboBoxseason_SelectedIndexChanged);
             // 
             // labelCompetition
             // 
@@ -192,6 +195,24 @@
             this.comboBoxcompetition.TabIndex = 79;
             this.comboBoxcompetition.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(588, 313);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 36);
+            this.label1.TabIndex = 80;
+            this.label1.Text = "Venue:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(704, 317);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(132, 41);
+            this.textBox1.TabIndex = 81;
+            // 
             // AddMatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
@@ -200,6 +221,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1478, 894);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxcompetition);
             this.Controls.Add(this.labelCompetition);
             this.Controls.Add(this.comboBoxseason);
@@ -221,6 +244,7 @@
             this.Name = "AddMatch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddMatch";
+            this.Load += new System.EventHandler(this.AddMatch_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,5 +267,7 @@
         private System.Windows.Forms.ComboBox comboBoxseason;
         private System.Windows.Forms.Label labelCompetition;
         private System.Windows.Forms.ComboBox comboBoxcompetition;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
