@@ -20,7 +20,9 @@ namespace Taqtik
         private void button_addMatch_Click(object sender, EventArgs e)
         {
             AddMatch addMatchForm = new AddMatch();
-            addMatchForm.ShowDialog();
+            addMatchForm.Show();
+            this.Hide();
+
         }
 
         private void button_addEvent_Click(object sender, EventArgs e)
