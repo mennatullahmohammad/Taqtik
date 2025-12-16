@@ -22,5 +22,10 @@ namespace Taqtik
             AddSubs addSubsForm = new AddSubs();
             addSubsForm.ShowDialog();
         }
+
+        private void textBox_homeFouls_TextChanged(object sender, EventArgs e)
+        {
+            //alielzanati
+        }
     }
 }
