@@ -89,9 +89,15 @@ namespace Taqtik
 
             return dbMan.ExecuteReader(query);
         }
+        public DataTable SelectRoleByUsername(string username)
+        {
+            string query = "SELECT role FROM Users WHERE name= '" + username + "'; ";
+
+            return dbMan.ExecuteReader(query);
+        }
         public DataTable SelectGoals(int playerid)
         {
-            string query = "SELECT COUNT(*) FROM Event E" +
+            string query = "SELECT COUNT(*) FROM Event E " +
                 "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
                 "WHERE E.player_id = " + playerid + " AND ET.name = 'Goal'";
             return dbMan.ExecuteReader(query);
