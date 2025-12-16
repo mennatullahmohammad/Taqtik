@@ -48,7 +48,6 @@
             this.button_showteam.TabIndex = 17;
             this.button_showteam.Text = "Show Team";
             this.button_showteam.UseVisualStyleBackColor = true;
-            this.button_showteam.Click += new System.EventHandler(this.button_showteam_Click);
             // 
             // comboBox2
             // 
@@ -78,7 +77,6 @@
             this.button_showmatch.TabIndex = 14;
             this.button_showmatch.Text = "Show Match";
             this.button_showmatch.UseVisualStyleBackColor = true;
-            this.button_showmatch.Click += new System.EventHandler(this.button_showmatch_Click);
             // 
             // label2
             // 
@@ -128,7 +126,6 @@
             this.label1.Size = new System.Drawing.Size(446, 36);
             this.label1.TabIndex = 9;
             this.label1.Text = "//User team should appear hear//";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Team
             // 
