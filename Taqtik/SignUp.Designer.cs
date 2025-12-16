@@ -104,6 +104,7 @@
             this.comboBox_team.Name = "comboBox_team";
             this.comboBox_team.Size = new System.Drawing.Size(262, 44);
             this.comboBox_team.TabIndex = 14;
+            this.comboBox_team.SelectedIndexChanged += new System.EventHandler(this.comboBox_team_SelectedIndexChanged);
             // 
             // button_signup
             // 

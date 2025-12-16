@@ -39,8 +39,9 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(1031, 202);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(372, 48);
+            this.comboBox1.Size = new System.Drawing.Size(372, 44);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label_chooseteam
             // 
@@ -48,7 +49,7 @@
             this.label_chooseteam.BackColor = System.Drawing.Color.Transparent;
             this.label_chooseteam.Location = new System.Drawing.Point(733, 202);
             this.label_chooseteam.Name = "label_chooseteam";
-            this.label_chooseteam.Size = new System.Drawing.Size(253, 40);
+            this.label_chooseteam.Size = new System.Drawing.Size(207, 36);
             this.label_chooseteam.TabIndex = 1;
             this.label_chooseteam.Text = "Choose Team:";
             // 
@@ -64,7 +65,7 @@
             // 
             // subscription
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));

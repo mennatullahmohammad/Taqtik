@@ -61,7 +61,20 @@ namespace Taqtik
             string query = "SELECT team_id, name FROM Team;";
             return dbMan.ExecuteReader(query);
         }
-
-
+        public DataTable SelectAllSeasons()
+        {
+            string query = "SELECT season_id, year FROM Season;";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectAllCompetitons()
+        {
+            string query = "SELECT competition_id, name FROM Competition;";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectAllReferees()
+        {
+            string query = "SELECT referee_id, name FROM Referee;";
+            return dbMan.ExecuteReader(query);
+        }
     }
 }

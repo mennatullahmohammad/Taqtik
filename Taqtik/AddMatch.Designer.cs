@@ -43,7 +43,7 @@
             this.SEASON = new System.Windows.Forms.Label();
             this.comboBoxseason = new System.Windows.Forms.ComboBox();
             this.labelCompetition = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxcompetition = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label_gameweek
@@ -94,6 +94,7 @@
             this.comboBox_referee.Name = "comboBox_referee";
             this.comboBox_referee.Size = new System.Drawing.Size(128, 44);
             this.comboBox_referee.TabIndex = 70;
+            this.comboBox_referee.SelectedIndexChanged += new System.EventHandler(this.comboBox_referee_SelectedIndexChanged);
             // 
             // label_referee
             // 
@@ -134,6 +135,7 @@
             this.comboBoxhometeam.Name = "comboBoxhometeam";
             this.comboBoxhometeam.Size = new System.Drawing.Size(128, 44);
             this.comboBoxhometeam.TabIndex = 73;
+            this.comboBoxhometeam.SelectedIndexChanged += new System.EventHandler(this.comboBoxhometeam_SelectedIndexChanged);
             // 
             // comboBoxawayteam
             // 
@@ -181,13 +183,14 @@
             this.labelCompetition.TabIndex = 78;
             this.labelCompetition.Text = "Competition:";
             // 
-            // comboBox1
+            // comboBoxcompetition
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(708, 430);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(128, 44);
-            this.comboBox1.TabIndex = 79;
+            this.comboBoxcompetition.FormattingEnabled = true;
+            this.comboBoxcompetition.Location = new System.Drawing.Point(708, 430);
+            this.comboBoxcompetition.Name = "comboBoxcompetition";
+            this.comboBoxcompetition.Size = new System.Drawing.Size(128, 44);
+            this.comboBoxcompetition.TabIndex = 79;
+            this.comboBoxcompetition.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // AddMatch
             // 
@@ -197,7 +200,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1478, 894);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxcompetition);
             this.Controls.Add(this.labelCompetition);
             this.Controls.Add(this.comboBoxseason);
             this.Controls.Add(this.SEASON);
@@ -239,6 +242,6 @@
         private System.Windows.Forms.Label SEASON;
         private System.Windows.Forms.ComboBox comboBoxseason;
         private System.Windows.Forms.Label labelCompetition;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxcompetition;
     }
 }
