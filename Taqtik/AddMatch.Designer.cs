@@ -174,7 +174,6 @@
             this.comboBoxseason.Name = "comboBoxseason";
             this.comboBoxseason.Size = new System.Drawing.Size(128, 44);
             this.comboBoxseason.TabIndex = 77;
-            this.comboBoxseason.SelectedIndexChanged += new System.EventHandler(this.comboBoxseason_SelectedIndexChanged);
             // 
             // labelCompetition
             // 
@@ -204,7 +203,6 @@
             this.label1.Size = new System.Drawing.Size(110, 36);
             this.label1.TabIndex = 80;
             this.label1.Text = "Venue:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
