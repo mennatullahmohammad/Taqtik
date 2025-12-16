@@ -132,6 +132,7 @@ namespace Taqtik
                 "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
                 "WHERE E.player_id = " + playerid + " AND ET.name = 'Goal'";
             return dbMan.ExecuteReader(query);
+        }
         public DataTable SelectGameWeeks(int seasonId, int competitionId)
         {
             string query =

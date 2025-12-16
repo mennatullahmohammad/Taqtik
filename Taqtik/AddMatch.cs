@@ -135,10 +135,11 @@ namespace Taqtik
         {
 
         }
-<<<<<<< HEAD
 
         private void AddMatch_Load(object sender, EventArgs e)
-=======
+        {
+
+        }
         private void RefreshGameWeeks()
         {
             if (!formLoaded) return;
@@ -178,7 +179,6 @@ namespace Taqtik
         }
 
         private void label1_Click(object sender, EventArgs e)
->>>>>>> fc39cbddad695c3e173226e094349f50a2a769d0
         {
 
         }
