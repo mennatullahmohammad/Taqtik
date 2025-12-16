@@ -27,5 +27,10 @@ namespace Taqtik
             Subs subsForm = new Subs();
             subsForm.ShowDialog();
         }
+
+        private void textBox_homeShots_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

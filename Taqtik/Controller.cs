@@ -50,10 +50,7 @@ namespace Taqtik
                                          "VALUES (" + newUserId + ", " + teamId + ");";
                     return dbMan.ExecuteNonQuery(queryAccess);
                 }
-                
             }
-                
-
             return 0; 
         }
 
@@ -99,6 +96,8 @@ namespace Taqtik
                 "WHERE E.player_id = " + playerid + " AND ET.name = 'Goal'";
             return dbMan.ExecuteReader(query);
         }
+
+        public 
 
     }
 }
