@@ -91,5 +91,43 @@ namespace Taqtik
             return dbMan.ExecuteReader(query);
         }
 
+        public DataTable YellowCard(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E " +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Yellow Card'";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable RedCard(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E " +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Red Card'";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable Assists(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E " +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Assist'";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable Shots(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E " +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Shot'";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable Passes(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E " +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Pass'";
+            return dbMan.ExecuteReader(query);
+        }
+
+
     }
 }
