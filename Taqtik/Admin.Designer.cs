@@ -44,7 +44,7 @@
             this.comboBox_chooseteam.FormattingEnabled = true;
             this.comboBox_chooseteam.Location = new System.Drawing.Point(1042, 174);
             this.comboBox_chooseteam.Name = "comboBox_chooseteam";
-            this.comboBox_chooseteam.Size = new System.Drawing.Size(302, 48);
+            this.comboBox_chooseteam.Size = new System.Drawing.Size(302, 44);
             this.comboBox_chooseteam.TabIndex = 0;
             // 
             // label_chooseteam
@@ -53,7 +53,7 @@
             this.label_chooseteam.BackColor = System.Drawing.Color.Transparent;
             this.label_chooseteam.Location = new System.Drawing.Point(724, 177);
             this.label_chooseteam.Name = "label_chooseteam";
-            this.label_chooseteam.Size = new System.Drawing.Size(253, 40);
+            this.label_chooseteam.Size = new System.Drawing.Size(207, 36);
             this.label_chooseteam.TabIndex = 1;
             this.label_chooseteam.Text = "Choose Team:";
             // 
@@ -81,6 +81,7 @@
             this.dataGridView_users.RowTemplate.Height = 28;
             this.dataGridView_users.Size = new System.Drawing.Size(896, 259);
             this.dataGridView_users.TabIndex = 3;
+            this.dataGridView_users.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_users_CellContentClick);
             // 
             // button_display
             // 
@@ -99,7 +100,7 @@
             this.label_users.BackColor = System.Drawing.Color.Transparent;
             this.label_users.Location = new System.Drawing.Point(537, 398);
             this.label_users.Name = "label_users";
-            this.label_users.Size = new System.Drawing.Size(121, 40);
+            this.label_users.Size = new System.Drawing.Size(101, 36);
             this.label_users.TabIndex = 5;
             this.label_users.Text = "Users:";
             // 
@@ -110,13 +111,13 @@
             this.label_welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_welcome.Location = new System.Drawing.Point(795, 54);
             this.label_welcome.Name = "label_welcome";
-            this.label_welcome.Size = new System.Drawing.Size(475, 59);
+            this.label_welcome.Size = new System.Drawing.Size(406, 52);
             this.label_welcome.TabIndex = 6;
             this.label_welcome.Text = "Welcome //Admin//";
             // 
             // Admin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));

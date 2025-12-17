@@ -24,5 +24,10 @@ namespace Taqtik
             AddUser adduser = new AddUser();
             adduser.Show();
         }
+
+        private void dataGridView_users_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
