@@ -68,6 +68,7 @@ CREATE TABLE Match (
     season_competition_id INT NOT NULL,
     referee_id INT NOT NULL,
     Venue Varchar(50) ,
+    match_date DATETIME NOT NULL,
     FOREIGN KEY (gameweek_id,season_competition_id) REFERENCES GameWeek(gameweek_id,season_competition_id),
     FOREIGN KEY (referee_id) REFERENCES Referee(referee_id)
 );

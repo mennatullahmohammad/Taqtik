@@ -234,8 +234,14 @@ namespace Taqtik
             return dbMan.ExecuteReader(query);
         }
         public DataTable SelectAllPlayers()
+        public DataTable SelectAllPlayers(int teamid)
         {
-            string query = "SELECT player_id,name FROM Player;";
+            string query =
+               " SELECT P.player_id, P.name FROM Player P" +
+               " JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id " +
+               " JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id " +
+               " WHERE TS.team_id = " + teamid + ";";
+
             return dbMan.ExecuteReader(query);
         }
         public DataTable SelectTeamByUsername(string username)
@@ -365,5 +371,69 @@ namespace Taqtik
 
 
 
+        public DataTable YellowCard(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E " +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Yellow Card'";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable RedCard(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E " +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Red Card'";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable Assists(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E " +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Assist'";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable Shots(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E " +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Shot'";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable Passes(int playerid)
+        {
+            string query = "SELECT COUNT(*) FROM Event E " +
+                "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE E.player_id = " + playerid + " AND ET.name = 'Pass'";
+            return dbMan.ExecuteReader(query);
+        }
+        public int SelectMatchesPlayed(int playerid)
+        {
+            string query = "SELECT COUNT(DISTINCT match_id) FROM Event " +
+                           "WHERE player_id = " + playerid;
+
+            return (int)dbMan.ExecuteScalar(query);
+        }
+        public int SelectMinutesPlayed(int playerid)
+        {
+            //if the sum turns out to be nothing, use 0 instead so the math doesn't crash.
+            string query = @"
+                SELECT 
+                   (COUNT(DISTINCT E.match_id) * 90) - 
+                   COALESCE(SUM(
+                       CASE 
+                           WHEN ET.name = 'Player In'  THEN E.time       
+                           WHEN ET.name = 'Player Out' THEN 90 - E.time  
+                           ELSE 0 
+                       END
+                   ), 0)
+                FROM Event E
+                JOIN EventType ET ON E.event_type_id = ET.event_type_id
+                WHERE E.player_id = " + playerid;
+
+            object result = dbMan.ExecuteScalar(query);
+            return (result != null) ? Convert.ToInt32(result) : 0;
+        
+        }
     }
 }

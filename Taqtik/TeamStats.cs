@@ -17,7 +17,7 @@ namespace Taqtik
         public TeamStats(string username)
         {
             InitializeComponent();
-            _currentUsername = username; // Store it for later
+            _currentUsername = username; // Store it for use in datagrid view
         }
 
         private void TeamStats_Load(object sender, EventArgs e)
