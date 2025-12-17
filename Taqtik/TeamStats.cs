@@ -17,28 +17,52 @@ namespace Taqtik
         public TeamStats(string username)
         {
             InitializeComponent();
-            _currentUsername = username; // Store it for use in datagrid view
+            _currentUsername = username;
+        }
+        private bool openedByAdmin = false;
+        private int selectedTeamId;
+        public TeamStats(int teamId)
+        {
+            InitializeComponent();
+            selectedTeamId = teamId;
+            openedByAdmin = true;
         }
 
         private void TeamStats_Load(object sender, EventArgs e)
         {
-            DataTable dt = controllerObj.SelectTeamByUsername(_currentUsername);
+            DataTable dt;
 
-            if (dt != null && dt.Rows.Count > 0)
+            if (openedByAdmin)
             {
-                string teamName = dt.Rows[0]["name"].ToString(); //default row 0
-                label_userteam.Text = teamName;
+                // Admin opened the form → use teamId
+                dt = controllerObj.GetTeamStatsByTeamId(selectedTeamId);
 
-                DataTable statsTable = controllerObj.GetTeamStats(_currentUsername);
-                dataGridView_teamstats.DataSource = statsTable;
-                dataGridView_teamstats.Refresh();
-
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    label_userteam.Text = dt.Rows[0]["TeamName"].ToString();
+                }
+                else
+                {
+                    label_userteam.Text = "No Data Found";
+                }
             }
             else
             {
-                label_userteam.Text = "No Team Assigned";
-                dataGridView_teamstats.DataSource = null;
+                // User opened the form → use username (original behavior)
+                dt = controllerObj.SelectTeamByUsername(_currentUsername);
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    label_userteam.Text = dt.Rows[0]["name"].ToString();
+                }
+                else
+                {
+                    label_userteam.Text = "No Team Assigned";
+                }
             }
+
+            dataGridView_teamstats.DataSource = dt;
+            dataGridView_teamstats.Refresh();
         }
 
         private void dataGridView_teamstats_CellContentClick(object sender, DataGridViewCellEventArgs e)
