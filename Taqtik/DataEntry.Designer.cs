@@ -50,7 +50,7 @@
             this.label_welcome.ForeColor = System.Drawing.Color.White;
             this.label_welcome.Location = new System.Drawing.Point(808, 32);
             this.label_welcome.Name = "label_welcome";
-            this.label_welcome.Size = new System.Drawing.Size(212, 52);
+            this.label_welcome.Size = new System.Drawing.Size(180, 42);
             this.label_welcome.TabIndex = 0;
             this.label_welcome.Text = "Welcome";
             // 
@@ -72,7 +72,7 @@
             this.label_username.ForeColor = System.Drawing.Color.White;
             this.label_username.Location = new System.Drawing.Point(1067, 32);
             this.label_username.Name = "label_username";
-            this.label_username.Size = new System.Drawing.Size(276, 52);
+            this.label_username.Size = new System.Drawing.Size(236, 42);
             this.label_username.TabIndex = 2;
             this.label_username.Text = "//username//";
             // 
@@ -144,6 +144,7 @@
             this.buttoncompinstance.TabIndex = 9;
             this.buttoncompinstance.Text = "Add Competition Instance";
             this.buttoncompinstance.UseVisualStyleBackColor = true;
+            this.buttoncompinstance.Click += new System.EventHandler(this.buttoncompinstance_Click_1);
             // 
             // button_addTeamToCompetition
             // 
@@ -157,7 +158,7 @@
             // 
             // DataEntry
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
