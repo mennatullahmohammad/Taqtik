@@ -233,7 +233,6 @@ namespace Taqtik
             string query = "SELECT referee_id, name FROM Referee;";
             return dbMan.ExecuteReader(query);
         }
-        public DataTable SelectAllPlayers()
         public DataTable SelectAllPlayers(int teamid)
         {
             string query =
