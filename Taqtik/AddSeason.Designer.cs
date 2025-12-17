@@ -42,7 +42,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(985, 203);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(297, 55);
+            this.label4.Size = new System.Drawing.Size(248, 46);
             this.label4.TabIndex = 18;
             this.label4.Text = "Add Season";
             // 
@@ -50,7 +50,7 @@
             // 
             this.textBox_year.Location = new System.Drawing.Point(1044, 340);
             this.textBox_year.Name = "textBox_year";
-            this.textBox_year.Size = new System.Drawing.Size(236, 48);
+            this.textBox_year.Size = new System.Drawing.Size(236, 41);
             this.textBox_year.TabIndex = 17;
             // 
             // label1
@@ -59,7 +59,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(906, 343);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 40);
+            this.label1.Size = new System.Drawing.Size(85, 36);
             this.label1.TabIndex = 16;
             this.label1.Text = "Year:";
             // 
@@ -72,10 +72,11 @@
             this.button_add.TabIndex = 19;
             this.button_add.Text = "Add";
             this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
             // AddSeason
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));

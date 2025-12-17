@@ -46,7 +46,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(965, 150);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(254, 55);
+            this.label4.Size = new System.Drawing.Size(211, 46);
             this.label4.TabIndex = 15;
             this.label4.Text = "Add Team";
             // 
@@ -59,12 +59,13 @@
             this.button_add.TabIndex = 14;
             this.button_add.Text = "Add";
             this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
             // textBox_year
             // 
             this.textBox_year.Location = new System.Drawing.Point(1024, 444);
             this.textBox_year.Name = "textBox_year";
-            this.textBox_year.Size = new System.Drawing.Size(236, 48);
+            this.textBox_year.Size = new System.Drawing.Size(236, 41);
             this.textBox_year.TabIndex = 13;
             // 
             // label3
@@ -73,7 +74,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(764, 447);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(254, 40);
+            this.label3.Size = new System.Drawing.Size(212, 36);
             this.label3.TabIndex = 12;
             this.label3.Text = "Year Founded:";
             // 
@@ -81,7 +82,7 @@
             // 
             this.textBox_country.Location = new System.Drawing.Point(1024, 368);
             this.textBox_country.Name = "textBox_country";
-            this.textBox_country.Size = new System.Drawing.Size(236, 48);
+            this.textBox_country.Size = new System.Drawing.Size(236, 41);
             this.textBox_country.TabIndex = 11;
             // 
             // label2
@@ -90,7 +91,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(854, 371);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 40);
+            this.label2.Size = new System.Drawing.Size(128, 36);
             this.label2.TabIndex = 10;
             this.label2.Text = "Country:";
             // 
@@ -98,7 +99,7 @@
             // 
             this.textBox_name.Location = new System.Drawing.Point(1024, 287);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(236, 48);
+            this.textBox_name.Size = new System.Drawing.Size(236, 41);
             this.textBox_name.TabIndex = 9;
             // 
             // label1
@@ -107,13 +108,13 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(886, 290);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 40);
+            this.label1.Size = new System.Drawing.Size(100, 36);
             this.label1.TabIndex = 8;
             this.label1.Text = "Name:";
             // 
             // AddTeam
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

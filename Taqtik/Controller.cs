@@ -95,6 +95,123 @@ namespace Taqtik
             string query = "SELECT season_id, year FROM Season;";
             return dbMan.ExecuteReader(query);
         }
+        public bool CompetitionInstanceExists(int seasonId, int competitionId)
+        {
+            string q =
+                "SELECT COUNT(*) FROM CompetitionInstance " +
+                "WHERE season_id = " + seasonId +
+                " AND competition_id = " + competitionId + ";";
+
+            return Convert.ToInt32(dbMan.ExecuteScalar(q)) > 0;
+        }
+        public int InsertTeamSeason(int teamId, int seasonCompetitionId)
+        {
+            string q =
+                "INSERT INTO TeamSeason (team_id, season_competition_id) VALUES (" +
+                teamId + ", " + seasonCompetitionId + ");";
+
+            return dbMan.ExecuteNonQuery(q);
+        }
+        public bool SeasonExists(int year)
+        {
+            string q = "SELECT COUNT(*) FROM Season WHERE year = " + year + ";";
+            return Convert.ToInt32(dbMan.ExecuteScalar(q)) > 0;
+        }
+
+        public int InsertSeason(int year)
+        {
+            string q = "INSERT INTO Season (year) VALUES (" + year + ");";
+            return dbMan.ExecuteNonQuery(q);
+        }
+
+        public int InsertPlayer(string name, int? age, string position)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return 0;
+
+            string safeName = name.Replace("'", "''");
+            string posSql = string.IsNullOrWhiteSpace(position) ? "NULL" : "'" + position.Replace("'", "''") + "'";
+            string ageSql = age.HasValue ? age.Value.ToString() : "NULL";
+
+            string q =
+                "INSERT INTO Player (name, age, position) VALUES (" +
+                "'" + safeName + "', " + ageSql + ", " + posSql + ");";
+
+            return dbMan.ExecuteNonQuery(q);
+        }
+        public int InsertTeam(string name, string country, int? yearFounded)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return 0;
+
+            string safeName = name.Replace("'", "''");
+            string countrySql = string.IsNullOrWhiteSpace(country) ? "NULL" : "'" + country.Replace("'", "''") + "'";
+            string yearSql = yearFounded.HasValue ? yearFounded.Value.ToString() : "NULL";
+
+            string q =
+                "INSERT INTO Team (name, country, year_founded) VALUES (" +
+                "'" + safeName + "', " + countrySql + ", " + yearSql + ");";
+
+            return dbMan.ExecuteNonQuery(q);
+        }
+        public DataTable SelectAllEventTypes()
+        {
+            string q = "SELECT event_type_id, name FROM EventType ORDER BY name;";
+            return dbMan.ExecuteReader(q);
+        }
+        public DataTable SelectAllMatches()
+        {
+            string q = "SELECT match_id FROM Match ORDER BY match_id DESC;";
+            return dbMan.ExecuteReader(q);
+        }
+        public DataTable SelectMatchesForCombo()
+        {
+            string q =
+                "SELECT m.match_id, " +
+                "       'GW' + CAST(m.gameweek_id AS VARCHAR(10)) + ' | ' + " +
+                "       ISNULL(ht.name,'?') + ' vs ' + ISNULL(at.name,'?') AS display_text " +
+                "FROM [Match] m " +
+                "LEFT JOIN MatchTeams mth ON mth.match_id = m.match_id AND mth.is_home = 1 " +
+                "LEFT JOIN Team ht ON ht.team_id = mth.team_id " +
+                "LEFT JOIN MatchTeams mta ON mta.match_id = m.match_id AND mta.is_home = 0 " +
+                "LEFT JOIN Team at ON at.team_id = mta.team_id " +
+                "ORDER BY m.match_id DESC;";
+
+            return dbMan.ExecuteReader(q);
+        }
+
+        public int InsertEvent(int matchId, int eventTypeId, int playerId, int minute, int second, int enteredBy)
+        {
+            string q =
+                "INSERT INTO Event (match_id, event_type_id, player_id, minute, second, entered_by) VALUES (" +
+                matchId + ", " + eventTypeId + ", " + playerId + ", " + minute + ", " + second + ", " + enteredBy + ");";
+
+            return dbMan.ExecuteNonQuery(q);
+        }
+
+
+
+        public bool TeamSeasonExists(int teamId, int seasonCompetitionId)
+        {
+            string q =
+                "SELECT COUNT(*) FROM TeamSeason " +
+                "WHERE team_id = " + teamId +
+                " AND season_competition_id = " + seasonCompetitionId + ";";
+
+            return Convert.ToInt32(dbMan.ExecuteScalar(q)) > 0;
+        }
+
+        public int InsertCompetitionInstance(int seasonId, int competitionId, int? promotion, int relegation, int numberOfTeams)
+        {
+            string promoSql = promotion.HasValue ? promotion.Value.ToString() : "NULL";
+
+            string q =
+                "INSERT INTO CompetitionInstance (season_id, competition_id, promotion_spots, relegation_spots, number_of_teams) " +
+                "VALUES (" + seasonId + ", " + competitionId + ", " + promoSql + ", " + relegation + ", " + numberOfTeams + ");";
+
+            return dbMan.ExecuteNonQuery(q);
+        }
+
         public DataTable SelectAllCompetitons()
         {
             string query = "SELECT competition_id, name FROM Competition;";
@@ -201,7 +318,38 @@ namespace Taqtik
 
             return dbMan.ExecuteNonQuery(query);
         }
+        public int InsertReferee(string name, int? age, string country)
+        {
+            // name is required
+            if (string.IsNullOrWhiteSpace(name)) return 0;
 
+            string ageSql = (age.HasValue ? age.Value.ToString() : "NULL");
+            string countrySql = (string.IsNullOrWhiteSpace(country) ? "NULL" : "'" + country.Replace("'", "''") + "'");
+
+            string query =
+                "INSERT INTO Referee (name, age, country) VALUES (" +
+                "'" + name.Replace("'", "''") + "', " +
+                ageSql + ", " +
+                countrySql +
+                ");";
+
+            return dbMan.ExecuteNonQuery(query); // returns affected rows
+        }
+
+        public int InsertCompetition(string name, string country)
+        {
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(country))
+                return 0;
+
+            string safeName = name.Replace("'", "''");
+            string safeCountry = country.Replace("'", "''");
+
+            string query =
+                "INSERT INTO Competition (name, country) VALUES (" +
+                "'" + safeName + "', '" + safeCountry + "');";
+
+            return dbMan.ExecuteNonQuery(query);
+        }
 
 
 

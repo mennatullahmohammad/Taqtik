@@ -45,7 +45,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(865, 262);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 40);
+            this.label1.Size = new System.Drawing.Size(100, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name:";
             // 
@@ -53,14 +53,14 @@
             // 
             this.textBox_name.Location = new System.Drawing.Point(1003, 259);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(236, 48);
+            this.textBox_name.Size = new System.Drawing.Size(236, 41);
             this.textBox_name.TabIndex = 1;
             // 
             // textBox_age
             // 
             this.textBox_age.Location = new System.Drawing.Point(1003, 340);
             this.textBox_age.Name = "textBox_age";
-            this.textBox_age.Size = new System.Drawing.Size(236, 48);
+            this.textBox_age.Size = new System.Drawing.Size(236, 41);
             this.textBox_age.TabIndex = 3;
             // 
             // label2
@@ -69,7 +69,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(865, 343);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 40);
+            this.label2.Size = new System.Drawing.Size(77, 36);
             this.label2.TabIndex = 2;
             this.label2.Text = "Age:";
             // 
@@ -77,7 +77,7 @@
             // 
             this.textBox_position.Location = new System.Drawing.Point(1003, 416);
             this.textBox_position.Name = "textBox_position";
-            this.textBox_position.Size = new System.Drawing.Size(236, 48);
+            this.textBox_position.Size = new System.Drawing.Size(236, 41);
             this.textBox_position.TabIndex = 5;
             // 
             // label3
@@ -86,7 +86,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(833, 419);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(155, 40);
+            this.label3.Size = new System.Drawing.Size(131, 36);
             this.label3.TabIndex = 4;
             this.label3.Text = "Position:";
             // 
@@ -99,6 +99,7 @@
             this.button_add.TabIndex = 6;
             this.button_add.Text = "Add";
             this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
             // label4
             // 
@@ -107,13 +108,13 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(944, 122);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(269, 55);
+            this.label4.Size = new System.Drawing.Size(225, 46);
             this.label4.TabIndex = 7;
             this.label4.Text = "Add Player";
             // 
             // AddPlayer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
