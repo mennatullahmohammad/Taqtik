@@ -28,32 +28,6 @@ namespace Taqtik
 
             return (int)dbMan.ExecuteScalar(query);
         }
-        public int InsertUser(string name, string password, string role, int teamId)
-        {
-            string query = "SELECT COUNT(*) FROM Users WHERE name = '" + name  + "';";
-            int count = (int)dbMan.ExecuteScalar(query);
-            if (count > 0)
-            {
-                return -1;
-            }
-            else
-            {
-                string queryUser = "INSERT INTO Users (name, password_hash, role) " +
-                           "VALUES ('" + name + "','" + password + "','" + role + "'); " +
-                           "SELECT SCOPE_IDENTITY();";
-
-                object result = dbMan.ExecuteScalar(queryUser);
-
-                if (result != null)
-                {
-                    int newUserId = Convert.ToInt32(result);
-                    string queryAccess = "INSERT INTO UserTeamAccess (user_id, team_id) " +
-                                         "VALUES (" + newUserId + ", " + teamId + ");";
-                    return dbMan.ExecuteNonQuery(queryAccess);
-                }
-            }
-            return 0; 
-        }
 
         public int AddTeam(string team, string usern)
         {
@@ -264,7 +238,7 @@ namespace Taqtik
             string query = "SELECT COUNT(*) FROM Event E " +
                 "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
                 "WHERE E.player_id = " + playerid + " AND ET.name = 'Goal'";
-            return dbMan.ExecuteReader(query); 
+            return dbMan.ExecuteReader(query);
         }
         public DataTable SelectGameWeeks(int seasonId, int competitionId)
         {
@@ -304,7 +278,7 @@ namespace Taqtik
 
             return Convert.ToInt32(result);
         }
-        public int InsertMatch(int gameweekId,int seasonCompetitionId,int refereeId,string venue)
+        public int InsertMatch(int gameweekId, int seasonCompetitionId, int refereeId, string venue)
         {
             string query =
                 "INSERT INTO Match (gameweek_id, season_competition_id, referee_id, Venue) " +
@@ -368,6 +342,14 @@ namespace Taqtik
         }
 
 
+        public int GetUserIdByUsername(string username)
+        {
+            string safe = username.Replace("'", "''");
+            string q = "SELECT user_id FROM Users WHERE name = '" + safe + "';";
+            object r = dbMan.ExecuteScalar(q);
+            if (r == null || r == DBNull.Value) return -1;
+            return Convert.ToInt32(r);
+        }
 
 
         public DataTable YellowCard(int playerid)
@@ -415,24 +397,40 @@ namespace Taqtik
         }
         public int SelectMinutesPlayed(int playerid)
         {
-            //if the sum turns out to be nothing, use 0 instead so the math doesn't crash.
             string query = @"
                 SELECT 
-                   (COUNT(DISTINCT E.match_id) * 90) - 
-                   COALESCE(SUM(
-                       CASE 
-                           WHEN ET.name = 'Player In'  THEN E.time       
-                           WHEN ET.name = 'Player Out' THEN 90 - E.time  
-                           ELSE 0 
-                       END
-                   ), 0)
-                FROM Event E
-                JOIN EventType ET ON E.event_type_id = ET.event_type_id
-                WHERE E.player_id = " + playerid;
+                    SUM(
+                        CASE
+                            WHEN sub_out.minute IS NOT NULL AND sub_in.minute IS NOT NULL 
+                                THEN sub_out.minute - sub_in.minute
+                            WHEN sub_out.minute IS NOT NULL 
+                                THEN sub_out.minute
+                            WHEN sub_in.minute IS NOT NULL 
+                                THEN 90 - sub_in.minute
+                            ELSE 90
+                        END
+                    ) AS TotalMinutes
+                FROM (
+                    SELECT DISTINCT match_id 
+                    FROM Event 
+                    WHERE player_id = " + playerid + @"
+                ) matches
+                --like inner join
+                LEFT JOIN (
+                    SELECT match_id, minute 
+                    FROM Event E
+                    JOIN EventType ET ON E.event_type_id = ET.event_type_id
+                    WHERE E.player_id = " + playerid + @" AND ET.name = 'Player Out'
+                ) sub_out ON matches.match_id = sub_out.match_id
+                LEFT JOIN (
+                    SELECT match_id, minute 
+                    FROM Event E
+                    JOIN EventType ET ON E.event_type_id = ET.event_type_id
+                    WHERE E.player_id = " + playerid + @" AND ET.name = 'Player In'
+                ) sub_in ON matches.match_id = sub_in.match_id";
 
             object result = dbMan.ExecuteScalar(query);
-            return (result != null) ? Convert.ToInt32(result) : 0;
-        
+            return (result != null && result != DBNull.Value) ? Convert.ToInt32(result) : 0;
         }
         public DataTable GetTeamStats(int playerId)
         {
@@ -579,6 +577,59 @@ namespace Taqtik
                 "GROUP BY T.name;";
 
             return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectAllUsersForCombo()
+        {
+            string query =
+                "SELECT user_id, name " +
+                "FROM Users " +
+                "ORDER BY name;";
+
+            return dbMan.ExecuteReader(query);
+        }
+        public int DeleteUser(int userId)
+        {
+            string deleteAccess =
+                "DELETE FROM UserTeamAccess WHERE user_id = " + userId + ";";
+
+            dbMan.ExecuteNonQuery(deleteAccess);
+
+            string deleteUser =
+                "DELETE FROM Users WHERE user_id = " + userId + ";";
+
+            return dbMan.ExecuteNonQuery(deleteUser);
+        }
+        public int InsertUser(string name, string password, string role, int teamId)
+        {
+            string query = "SELECT COUNT(*) FROM Users WHERE name = '" + name + "';";
+            int count = (int)dbMan.ExecuteScalar(query);
+
+            if (count > 0)
+                return -1;
+
+            string queryUser =
+                "INSERT INTO Users (name, password_hash, role) " +
+                "VALUES ('" + name + "','" + password + "','" + role + "'); " +
+                "SELECT SCOPE_IDENTITY();";
+
+            object result = dbMan.ExecuteScalar(queryUser);
+
+            if (result == null)
+                return 0;
+
+            int newUserId = Convert.ToInt32(result);
+
+            // ONLY assign team if teamId > 0
+            if (teamId > 0)
+            {
+                string queryAccess =
+                    "INSERT INTO UserTeamAccess (user_id, team_id) VALUES (" +
+                    newUserId + ", " + teamId + ");";
+
+                dbMan.ExecuteNonQuery(queryAccess);
+            }
+
+            return 1;
         }
     }
 }

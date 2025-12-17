@@ -47,7 +47,7 @@
             this.comboBox_chooseteam.FormattingEnabled = true;
             this.comboBox_chooseteam.Location = new System.Drawing.Point(855, 145);
             this.comboBox_chooseteam.Name = "comboBox_chooseteam";
-            this.comboBox_chooseteam.Size = new System.Drawing.Size(302, 44);
+            this.comboBox_chooseteam.Size = new System.Drawing.Size(302, 48);
             this.comboBox_chooseteam.TabIndex = 0;
             // 
             // label_chooseteam
@@ -57,7 +57,7 @@
             this.label_chooseteam.ForeColor = System.Drawing.Color.White;
             this.label_chooseteam.Location = new System.Drawing.Point(596, 145);
             this.label_chooseteam.Name = "label_chooseteam";
-            this.label_chooseteam.Size = new System.Drawing.Size(207, 36);
+            this.label_chooseteam.Size = new System.Drawing.Size(253, 40);
             this.label_chooseteam.TabIndex = 1;
             this.label_chooseteam.Text = "Choose Team:";
             // 
@@ -108,7 +108,7 @@
             this.label_users.ForeColor = System.Drawing.Color.White;
             this.label_users.Location = new System.Drawing.Point(537, 398);
             this.label_users.Name = "label_users";
-            this.label_users.Size = new System.Drawing.Size(101, 36);
+            this.label_users.Size = new System.Drawing.Size(121, 40);
             this.label_users.TabIndex = 5;
             this.label_users.Text = "Users:";
             // 
@@ -120,7 +120,7 @@
             this.label_welcome.ForeColor = System.Drawing.Color.White;
             this.label_welcome.Location = new System.Drawing.Point(795, 54);
             this.label_welcome.Name = "label_welcome";
-            this.label_welcome.Size = new System.Drawing.Size(406, 52);
+            this.label_welcome.Size = new System.Drawing.Size(475, 59);
             this.label_welcome.TabIndex = 6;
             this.label_welcome.Text = "Welcome //Admin//";
             // 
@@ -134,6 +134,7 @@
             this.button_delete.TabIndex = 9;
             this.button_delete.Text = "Delete";
             this.button_delete.UseVisualStyleBackColor = false;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
             // label1
             // 
@@ -157,7 +158,7 @@
             // 
             // Admin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));

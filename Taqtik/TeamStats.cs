@@ -53,9 +53,15 @@ namespace Taqtik
                 // User opened the form → use username (original behavior)
                 dt = controllerObj.SelectTeamByUsername(_currentUsername);
 
+
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    label_userteam.Text = dt.Rows[0]["name"].ToString();
+                    string teamName = dt.Rows[0]["name"].ToString(); //default row 0
+                    label_userteam.Text = teamName;
+
+                    DataTable statsTable = controllerObj.GetTeamStats(_currentUsername);
+                    dataGridView_teamstats.DataSource = statsTable;
+                    dataGridView_teamstats.Refresh();
                 }
                 else
                 {

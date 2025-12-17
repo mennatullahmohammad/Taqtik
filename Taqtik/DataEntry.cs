@@ -17,6 +17,8 @@ namespace Taqtik
         {
             InitializeComponent();
             _currentUsername = username;
+            label_username.Text = _currentUsername;
+
         }
 
         private void button_addMatch_Click(object sender, EventArgs e)
@@ -81,6 +83,11 @@ namespace Taqtik
         }
 
         private void DataEntry_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_username_Click(object sender, EventArgs e)
         {
 
         }
