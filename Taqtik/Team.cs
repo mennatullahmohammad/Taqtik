@@ -28,10 +28,8 @@ namespace Taqtik
             comboBox2.DisplayMember = "name";
             comboBox2.ValueMember = "team_id";
             comboBox2.DataSource = dt1;
-            comboBox2.DataSource = dt;
-            _currentUsername= username;
-            DataTable dt= controllerObj.SelectTeamByUsername(_currentUsername);
-            teamId = Convert.ToInt32(dt.Rows[0]["team_id"]);
+            DataTable dt3 = controllerObj.SelectTeamByUsername(_currentUsername);
+            teamId = Convert.ToInt32(dt3.Rows[0]["team_id"]);
         }
 
         private void button_teamstats_Click(object sender, EventArgs e)
