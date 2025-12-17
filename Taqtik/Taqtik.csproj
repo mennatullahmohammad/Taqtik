@@ -88,12 +88,6 @@
     <Compile Include="AddSeason.Designer.cs">
       <DependentUpon>AddSeason.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddSubs.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddSubs.Designer.cs">
-      <DependentUpon>AddSubs.cs</DependentUpon>
-    </Compile>
     <Compile Include="AddTeam.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,9 +200,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddSeason.resx">
       <DependentUpon>AddSeason.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AddSubs.resx">
-      <DependentUpon>AddSubs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddTeam.resx">
       <DependentUpon>AddTeam.cs</DependentUpon>

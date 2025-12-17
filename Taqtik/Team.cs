@@ -19,7 +19,7 @@ namespace Taqtik
         public Team(string username)
         {
             InitializeComponent();
-
+            _currentUsername = username;
             DataTable dt = controllerObj.SelectAllTeams();
             DataTable dt1 = controllerObj.SelectAllTeams();
             
@@ -49,13 +49,20 @@ namespace Taqtik
 
         private void Team_Load(object sender, EventArgs e)
         {
-            label1.Text = _currentUsername;
+            label1.Text = teamname;
         }
 
         private void button_showmatch_Click(object sender, EventArgs e)
         {
-            Match match = new Match();
-            match.Show();
+            int matchid = controllerObj.GetMatchId(teamname, comboBox1.Text);
+            if (matchid > 0)
+                {Match match = new Match(_currentUsername, comboBox1.Text, matchid);
+                match.Show();
+            }
+            else
+            {
+                MessageBox.Show("Match not found.");
+            }
         }
 
         private void button_showteam_Click(object sender, EventArgs e)

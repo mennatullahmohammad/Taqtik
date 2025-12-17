@@ -37,7 +37,7 @@
             this.textBox_awayResult = new System.Windows.Forms.TextBox();
             this.textBox_awayPossession = new System.Windows.Forms.TextBox();
             this.label_possession = new System.Windows.Forms.Label();
-            this.textBox_homePossession = new System.Windows.Forms.TextBox();
+            this.textBox_homeRed = new System.Windows.Forms.TextBox();
             this.textBox_awayCorners = new System.Windows.Forms.TextBox();
             this.label_corners = new System.Windows.Forms.Label();
             this.textBox_homeCorners = new System.Windows.Forms.TextBox();
@@ -55,7 +55,6 @@
             this.textBox_homeFouls = new System.Windows.Forms.TextBox();
             this.textBox_awayRed = new System.Windows.Forms.TextBox();
             this.label_red = new System.Windows.Forms.Label();
-            this.textBox_homeRed = new System.Windows.Forms.TextBox();
             this.label_stats = new System.Windows.Forms.Label();
             this.textBox_awayOffsides = new System.Windows.Forms.TextBox();
             this.label_offsides = new System.Windows.Forms.Label();
@@ -64,7 +63,6 @@
             this.label_GW = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button_viewSubs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_vs
@@ -135,19 +133,20 @@
             // 
             this.label_possession.AutoSize = true;
             this.label_possession.BackColor = System.Drawing.Color.Transparent;
-            this.label_possession.Location = new System.Drawing.Point(971, 248);
+            this.label_possession.Location = new System.Drawing.Point(1028, 245);
             this.label_possession.Name = "label_possession";
-            this.label_possession.Size = new System.Drawing.Size(204, 36);
+            this.label_possession.Size = new System.Drawing.Size(157, 36);
             this.label_possession.TabIndex = 7;
-            this.label_possession.Text = "Possession %";
+            this.label_possession.Text = "Red Cards";
+            this.label_possession.Click += new System.EventHandler(this.label_possession_Click);
             // 
-            // textBox_homePossession
+            // textBox_homeRed
             // 
-            this.textBox_homePossession.Location = new System.Drawing.Point(802, 240);
-            this.textBox_homePossession.Name = "textBox_homePossession";
-            this.textBox_homePossession.ReadOnly = true;
-            this.textBox_homePossession.Size = new System.Drawing.Size(124, 41);
-            this.textBox_homePossession.TabIndex = 6;
+            this.textBox_homeRed.Location = new System.Drawing.Point(802, 240);
+            this.textBox_homeRed.Name = "textBox_homeRed";
+            this.textBox_homeRed.ReadOnly = true;
+            this.textBox_homeRed.Size = new System.Drawing.Size(124, 41);
+            this.textBox_homeRed.TabIndex = 6;
             // 
             // textBox_awayCorners
             // 
@@ -298,14 +297,6 @@
             this.label_red.TabIndex = 25;
             this.label_red.Text = "Red Cards";
             // 
-            // textBox_homeRed
-            // 
-            this.textBox_homeRed.Location = new System.Drawing.Point(801, 715);
-            this.textBox_homeRed.Name = "textBox_homeRed";
-            this.textBox_homeRed.ReadOnly = true;
-            this.textBox_homeRed.Size = new System.Drawing.Size(124, 41);
-            this.textBox_homeRed.TabIndex = 24;
-            // 
             // label_stats
             // 
             this.label_stats.AutoSize = true;
@@ -383,18 +374,6 @@
             this.label2.TabIndex = 33;
             this.label2.Text = "Referee:";
             // 
-            // button_viewSubs
-            // 
-            this.button_viewSubs.BackColor = System.Drawing.Color.White;
-            this.button_viewSubs.ForeColor = System.Drawing.Color.Black;
-            this.button_viewSubs.Location = new System.Drawing.Point(459, 601);
-            this.button_viewSubs.Name = "button_viewSubs";
-            this.button_viewSubs.Size = new System.Drawing.Size(243, 95);
-            this.button_viewSubs.TabIndex = 35;
-            this.button_viewSubs.Text = "View Substitutions";
-            this.button_viewSubs.UseVisualStyleBackColor = false;
-            this.button_viewSubs.Click += new System.EventHandler(this.button_viewSubs_Click);
-            // 
             // Match
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
@@ -403,7 +382,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1478, 894);
-            this.Controls.Add(this.button_viewSubs);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label_GW);
@@ -414,7 +392,6 @@
             this.Controls.Add(this.label_stats);
             this.Controls.Add(this.textBox_awayRed);
             this.Controls.Add(this.label_red);
-            this.Controls.Add(this.textBox_homeRed);
             this.Controls.Add(this.textBox_awayYellow);
             this.Controls.Add(this.label_yellow);
             this.Controls.Add(this.textBox_homeYellow);
@@ -432,7 +409,7 @@
             this.Controls.Add(this.textBox_homeShots);
             this.Controls.Add(this.textBox_awayPossession);
             this.Controls.Add(this.label_possession);
-            this.Controls.Add(this.textBox_homePossession);
+            this.Controls.Add(this.textBox_homeRed);
             this.Controls.Add(this.textBox_awayResult);
             this.Controls.Add(this.label_result);
             this.Controls.Add(this.label_away);
@@ -461,7 +438,6 @@
         private System.Windows.Forms.TextBox textBox_awayResult;
         private System.Windows.Forms.TextBox textBox_awayPossession;
         private System.Windows.Forms.Label label_possession;
-        private System.Windows.Forms.TextBox textBox_homePossession;
         private System.Windows.Forms.TextBox textBox_awayCorners;
         private System.Windows.Forms.Label label_corners;
         private System.Windows.Forms.TextBox textBox_homeCorners;
@@ -488,6 +464,5 @@
         private System.Windows.Forms.Label label_GW;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button_viewSubs;
     }
 }

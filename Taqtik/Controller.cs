@@ -434,5 +434,86 @@ namespace Taqtik
             return (result != null) ? Convert.ToInt32(result) : 0;
         
         }
+
+        public DataTable GetMatchInfo(int matchId)
+        {
+            string query = @"
+        SELECT m.gameweek_id, m.match_date, r.name AS referee
+        FROM Match m
+        INNER JOIN Referee r ON m.referee_id = r.referee_id
+        WHERE m.match_id = " + matchId;
+
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int GetMatchId(string homeTeam, string awayTeam)
+        {
+            string query = @"
+            SELECT m.match_id
+            FROM Match m
+            INNER JOIN MatchTeams ht ON m.match_id = ht.match_id AND ht.is_home = 1
+            INNER JOIN Team hteam ON ht.team_id = hteam.team_id
+            INNER JOIN MatchTeams at ON m.match_id = at.match_id AND at.is_home = 0
+            INNER JOIN Team ateam ON at.team_id = ateam.team_id
+            WHERE hteam.name = '" + homeTeam + "' AND ateam.name = '" + awayTeam + "'";
+
+            object result = dbMan.ExecuteScalar(query);
+            if (result != null)
+                return Convert.ToInt32(result);
+            return -1; // No match found
+        }
+
+        public int GetTeamStat(int matchId, string teamName, string statType)
+        {
+            int eventId = 0;
+            switch (statType.ToLower())
+            {
+                case "goals": eventId = 1; break;
+                case "shots": eventId = 2; break;
+                case "corners": eventId = 3; break;
+                case "fouls": eventId = 4; break;
+                case "offsides": eventId = 5; break;
+                case "passes": eventId = 6; break;
+                case "yellowcards": eventId = 7; break;
+                case "redcards": eventId = 8; break;
+                case "assists": eventId = 9; break;
+                default: return 0;
+            }
+
+            // Get team_id
+            string getTeamIdQuery = "SELECT team_id FROM Team WHERE name = '" + teamName.Replace("'", "''") + "'";
+            object teamIdObj = dbMan.ExecuteScalar(getTeamIdQuery);
+
+            if (teamIdObj == null) return 0;
+            int teamId = Convert.ToInt32(teamIdObj);
+
+            // Get the season_competition_id for this match
+            string getSeasonCompQuery = "SELECT season_competition_id FROM Match WHERE match_id = " + matchId;
+            object seasonCompObj = dbMan.ExecuteScalar(getSeasonCompQuery);
+
+            if (seasonCompObj == null) return 0;
+            int seasonCompId = Convert.ToInt32(seasonCompObj);
+
+            // Now get events for players from this team in this season
+            string query = @"
+        SELECT COUNT(*) 
+        FROM Event e
+        WHERE e.match_id = " + matchId + @"
+        AND e.event_type_id = " + eventId + @"
+        AND e.player_id IN (
+            SELECT pts.player_id
+            FROM PlayerTeamSeason pts
+            INNER JOIN TeamSeason ts ON pts.team_season_id = ts.team_season_id
+            WHERE ts.team_id = " + teamId + @"
+            AND ts.season_competition_id = " + seasonCompId + @"
+        )";
+
+            object result = dbMan.ExecuteScalar(query);
+            return (result != null) ? Convert.ToInt32(result) : 0;
+        }
+
+
+
+
     }
 }
