@@ -40,6 +40,7 @@
             this.buttonreferee = new System.Windows.Forms.Button();
             this.buttoncompinstance = new System.Windows.Forms.Button();
             this.button_addTeamToCompetition = new System.Windows.Forms.Button();
+            this.button_transferPlayer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_welcome
@@ -50,7 +51,7 @@
             this.label_welcome.ForeColor = System.Drawing.Color.White;
             this.label_welcome.Location = new System.Drawing.Point(808, 32);
             this.label_welcome.Name = "label_welcome";
-            this.label_welcome.Size = new System.Drawing.Size(180, 42);
+            this.label_welcome.Size = new System.Drawing.Size(212, 52);
             this.label_welcome.TabIndex = 0;
             this.label_welcome.Text = "Welcome";
             // 
@@ -72,7 +73,7 @@
             this.label_username.ForeColor = System.Drawing.Color.White;
             this.label_username.Location = new System.Drawing.Point(1067, 32);
             this.label_username.Name = "label_username";
-            this.label_username.Size = new System.Drawing.Size(236, 42);
+            this.label_username.Size = new System.Drawing.Size(276, 52);
             this.label_username.TabIndex = 2;
             this.label_username.Text = "//username//";
             this.label_username.Click += new System.EventHandler(this.label_username_Click);
@@ -157,13 +158,24 @@
             this.button_addTeamToCompetition.UseVisualStyleBackColor = true;
             this.button_addTeamToCompetition.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button_transferPlayer
+            // 
+            this.button_transferPlayer.Location = new System.Drawing.Point(548, 344);
+            this.button_transferPlayer.Name = "button_transferPlayer";
+            this.button_transferPlayer.Size = new System.Drawing.Size(220, 105);
+            this.button_transferPlayer.TabIndex = 11;
+            this.button_transferPlayer.Text = "Transfer Player ";
+            this.button_transferPlayer.UseVisualStyleBackColor = true;
+            this.button_transferPlayer.Click += new System.EventHandler(this.button_transferPlayer_Click);
+            // 
             // DataEntry
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1478, 844);
+            this.Controls.Add(this.button_transferPlayer);
             this.Controls.Add(this.button_addTeamToCompetition);
             this.Controls.Add(this.buttoncompinstance);
             this.Controls.Add(this.buttonreferee);
@@ -199,5 +211,6 @@
         private System.Windows.Forms.Button buttonreferee;
         private System.Windows.Forms.Button buttoncompinstance;
         private System.Windows.Forms.Button button_addTeamToCompetition;
+        private System.Windows.Forms.Button button_transferPlayer;
     }
 }

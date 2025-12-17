@@ -91,5 +91,11 @@ namespace Taqtik
         {
 
         }
+
+        private void button_transferPlayer_Click(object sender, EventArgs e)
+        {
+            TransferPlayer transferPlayerForm = new TransferPlayer();
+            transferPlayerForm.ShowDialog();
+        }
     }
 }
