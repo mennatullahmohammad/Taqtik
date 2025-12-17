@@ -397,24 +397,40 @@ namespace Taqtik
         }
         public int SelectMinutesPlayed(int playerid)
         {
-            //if the sum turns out to be nothing, use 0 instead so the math doesn't crash.
             string query = @"
                 SELECT 
-                   (COUNT(DISTINCT E.match_id) * 90) - 
-                   COALESCE(SUM(
-                       CASE 
-                           WHEN ET.name = 'Player In'  THEN E.time       
-                           WHEN ET.name = 'Player Out' THEN 90 - E.time  
-                           ELSE 0 
-                       END
-                   ), 0)
-                FROM Event E
-                JOIN EventType ET ON E.event_type_id = ET.event_type_id
-                WHERE E.player_id = " + playerid;
+                    SUM(
+                        CASE
+                            WHEN sub_out.minute IS NOT NULL AND sub_in.minute IS NOT NULL 
+                                THEN sub_out.minute - sub_in.minute
+                            WHEN sub_out.minute IS NOT NULL 
+                                THEN sub_out.minute
+                            WHEN sub_in.minute IS NOT NULL 
+                                THEN 90 - sub_in.minute
+                            ELSE 90
+                        END
+                    ) AS TotalMinutes
+                FROM (
+                    SELECT DISTINCT match_id 
+                    FROM Event 
+                    WHERE player_id = " + playerid + @"
+                ) matches
+                --like inner join
+                LEFT JOIN (
+                    SELECT match_id, minute 
+                    FROM Event E
+                    JOIN EventType ET ON E.event_type_id = ET.event_type_id
+                    WHERE E.player_id = " + playerid + @" AND ET.name = 'Player Out'
+                ) sub_out ON matches.match_id = sub_out.match_id
+                LEFT JOIN (
+                    SELECT match_id, minute 
+                    FROM Event E
+                    JOIN EventType ET ON E.event_type_id = ET.event_type_id
+                    WHERE E.player_id = " + playerid + @" AND ET.name = 'Player In'
+                ) sub_in ON matches.match_id = sub_in.match_id";
 
             object result = dbMan.ExecuteScalar(query);
-            return (result != null) ? Convert.ToInt32(result) : 0;
-
+            return (result != null && result != DBNull.Value) ? Convert.ToInt32(result) : 0;
         }
         public DataTable GetTeamStats(int playerId)
         {
