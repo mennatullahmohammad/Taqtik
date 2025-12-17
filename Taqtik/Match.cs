@@ -12,9 +12,15 @@ namespace Taqtik
 {
     public partial class Match : Form
     {
+        Controller controllerObj = new Controller();
+        private string un;
+        private string hometeam;
         public Match()
         {
             InitializeComponent();
+            DataTable dt = controllerObj.SelectTeamByUsername(un);
+            string teamName = dt.Rows[0]["name"].ToString();
+            hometeam = teamName;
         }
 
         private void Match_Load(object sender, EventArgs e)

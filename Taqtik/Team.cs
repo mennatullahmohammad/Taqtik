@@ -14,6 +14,7 @@ namespace Taqtik
     {
         private string _currentUsername;
         private int teamId;
+        private string teamname;
         Controller controllerObj = new Controller();
         public Team(string username)
         {
@@ -28,8 +29,10 @@ namespace Taqtik
             comboBox2.DisplayMember = "name";
             comboBox2.ValueMember = "team_id";
             comboBox2.DataSource = dt1;
+
             DataTable dt3 = controllerObj.SelectTeamByUsername(_currentUsername);
             teamId = Convert.ToInt32(dt3.Rows[0]["team_id"]);
+            teamname = Convert.ToString(dt3.Rows[0]["name"]);
         }
 
         private void button_teamstats_Click(object sender, EventArgs e)
