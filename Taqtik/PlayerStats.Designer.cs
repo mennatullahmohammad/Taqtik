@@ -55,8 +55,9 @@
             this.comboBox_players.FormattingEnabled = true;
             this.comboBox_players.Location = new System.Drawing.Point(1024, 162);
             this.comboBox_players.Name = "comboBox_players";
-            this.comboBox_players.Size = new System.Drawing.Size(340, 48);
+            this.comboBox_players.Size = new System.Drawing.Size(340, 44);
             this.comboBox_players.TabIndex = 0;
+            this.comboBox_players.SelectedIndexChanged += new System.EventHandler(this.comboBox_players_SelectedIndexChanged);
             // 
             // label_chooseplayer
             // 
@@ -65,7 +66,7 @@
             this.label_chooseplayer.ForeColor = System.Drawing.Color.White;
             this.label_chooseplayer.Location = new System.Drawing.Point(715, 165);
             this.label_chooseplayer.Name = "label_chooseplayer";
-            this.label_chooseplayer.Size = new System.Drawing.Size(263, 40);
+            this.label_chooseplayer.Size = new System.Drawing.Size(218, 36);
             this.label_chooseplayer.TabIndex = 2;
             this.label_chooseplayer.Text = "Choose Player:";
             // 
@@ -77,7 +78,7 @@
             this.label_playerstats.ForeColor = System.Drawing.Color.White;
             this.label_playerstats.Location = new System.Drawing.Point(912, 71);
             this.label_playerstats.Name = "label_playerstats";
-            this.label_playerstats.Size = new System.Drawing.Size(343, 59);
+            this.label_playerstats.Size = new System.Drawing.Size(292, 52);
             this.label_playerstats.TabIndex = 3;
             this.label_playerstats.Text = "Players Stats";
             // 
@@ -86,8 +87,9 @@
             this.textBox_goals.Location = new System.Drawing.Point(856, 275);
             this.textBox_goals.Name = "textBox_goals";
             this.textBox_goals.ReadOnly = true;
-            this.textBox_goals.Size = new System.Drawing.Size(177, 48);
+            this.textBox_goals.Size = new System.Drawing.Size(177, 41);
             this.textBox_goals.TabIndex = 4;
+            this.textBox_goals.TextChanged += new System.EventHandler(this.textBox_goals_TextChanged);
             // 
             // label1
             // 
@@ -96,7 +98,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(715, 278);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 40);
+            this.label1.Size = new System.Drawing.Size(101, 36);
             this.label1.TabIndex = 5;
             this.label1.Text = "Goals:";
             // 
@@ -107,7 +109,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(1084, 278);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(141, 40);
+            this.label2.Size = new System.Drawing.Size(119, 36);
             this.label2.TabIndex = 7;
             this.label2.Text = "Assists:";
             // 
@@ -116,7 +118,7 @@
             this.textBox_assists.Location = new System.Drawing.Point(1231, 275);
             this.textBox_assists.Name = "textBox_assists";
             this.textBox_assists.ReadOnly = true;
-            this.textBox_assists.Size = new System.Drawing.Size(177, 48);
+            this.textBox_assists.Size = new System.Drawing.Size(177, 41);
             this.textBox_assists.TabIndex = 6;
             // 
             // label3
@@ -126,7 +128,7 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(1095, 345);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 40);
+            this.label3.Size = new System.Drawing.Size(100, 36);
             this.label3.TabIndex = 11;
             this.label3.Text = "Shots:";
             // 
@@ -135,7 +137,7 @@
             this.textBox_shots.Location = new System.Drawing.Point(1231, 345);
             this.textBox_shots.Name = "textBox_shots";
             this.textBox_shots.ReadOnly = true;
-            this.textBox_shots.Size = new System.Drawing.Size(177, 48);
+            this.textBox_shots.Size = new System.Drawing.Size(177, 41);
             this.textBox_shots.TabIndex = 10;
             // 
             // label4
@@ -145,7 +147,7 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(1080, 424);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 40);
+            this.label4.Size = new System.Drawing.Size(120, 36);
             this.label4.TabIndex = 9;
             this.label4.Text = "Passes:";
             // 
@@ -154,7 +156,7 @@
             this.textBox_red.Location = new System.Drawing.Point(1231, 496);
             this.textBox_red.Name = "textBox_red";
             this.textBox_red.ReadOnly = true;
-            this.textBox_red.Size = new System.Drawing.Size(177, 48);
+            this.textBox_red.Size = new System.Drawing.Size(177, 41);
             this.textBox_red.TabIndex = 8;
             // 
             // label5
@@ -164,7 +166,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(553, 423);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(283, 40);
+            this.label5.Size = new System.Drawing.Size(234, 36);
             this.label5.TabIndex = 15;
             this.label5.Text = "Matches Played:";
             // 
@@ -173,7 +175,7 @@
             this.textBox_passes.Location = new System.Drawing.Point(1231, 416);
             this.textBox_passes.Name = "textBox_passes";
             this.textBox_passes.ReadOnly = true;
-            this.textBox_passes.Size = new System.Drawing.Size(177, 48);
+            this.textBox_passes.Size = new System.Drawing.Size(177, 41);
             this.textBox_passes.TabIndex = 14;
             // 
             // label6
@@ -183,7 +185,7 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(613, 348);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(223, 40);
+            this.label6.Size = new System.Drawing.Size(186, 36);
             this.label6.TabIndex = 13;
             this.label6.Text = "Mins Played:";
             // 
@@ -192,7 +194,7 @@
             this.textBox_mins.Location = new System.Drawing.Point(856, 345);
             this.textBox_mins.Name = "textBox_mins";
             this.textBox_mins.ReadOnly = true;
-            this.textBox_mins.Size = new System.Drawing.Size(177, 48);
+            this.textBox_mins.Size = new System.Drawing.Size(177, 41);
             this.textBox_mins.TabIndex = 12;
             // 
             // label7
@@ -202,7 +204,7 @@
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(606, 499);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(230, 40);
+            this.label7.Size = new System.Drawing.Size(193, 36);
             this.label7.TabIndex = 16;
             this.label7.Text = "Yellow cards:";
             // 
@@ -211,7 +213,7 @@
             this.textBox_matches.Location = new System.Drawing.Point(856, 420);
             this.textBox_matches.Name = "textBox_matches";
             this.textBox_matches.ReadOnly = true;
-            this.textBox_matches.Size = new System.Drawing.Size(177, 48);
+            this.textBox_matches.Size = new System.Drawing.Size(177, 41);
             this.textBox_matches.TabIndex = 17;
             // 
             // textBox_yellow
@@ -219,7 +221,7 @@
             this.textBox_yellow.Location = new System.Drawing.Point(856, 499);
             this.textBox_yellow.Name = "textBox_yellow";
             this.textBox_yellow.ReadOnly = true;
-            this.textBox_yellow.Size = new System.Drawing.Size(177, 48);
+            this.textBox_yellow.Size = new System.Drawing.Size(177, 41);
             this.textBox_yellow.TabIndex = 18;
             // 
             // label8
@@ -230,13 +232,13 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(1047, 502);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(178, 37);
+            this.label8.Size = new System.Drawing.Size(152, 31);
             this.label8.TabIndex = 19;
             this.label8.Text = "Red Cards:";
             // 
             // PlayerStats
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
