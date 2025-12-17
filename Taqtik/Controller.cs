@@ -28,32 +28,6 @@ namespace Taqtik
 
             return (int)dbMan.ExecuteScalar(query);
         }
-        public int InsertUser(string name, string password, string role, int teamId)
-        {
-            string query = "SELECT COUNT(*) FROM Users WHERE name = '" + name  + "';";
-            int count = (int)dbMan.ExecuteScalar(query);
-            if (count > 0)
-            {
-                return -1;
-            }
-            else
-            {
-                string queryUser = "INSERT INTO Users (name, password_hash, role) " +
-                           "VALUES ('" + name + "','" + password + "','" + role + "'); " +
-                           "SELECT SCOPE_IDENTITY();";
-
-                object result = dbMan.ExecuteScalar(queryUser);
-
-                if (result != null)
-                {
-                    int newUserId = Convert.ToInt32(result);
-                    string queryAccess = "INSERT INTO UserTeamAccess (user_id, team_id) " +
-                                         "VALUES (" + newUserId + ", " + teamId + ");";
-                    return dbMan.ExecuteNonQuery(queryAccess);
-                }
-            }
-            return 0; 
-        }
 
         public int AddTeam(string team, string usern)
         {
@@ -95,6 +69,60 @@ namespace Taqtik
             int count = Convert.ToInt32(dbMan.ExecuteScalar(queryTeamAccess));
             return count;
         }
+
+        public int GetOrCreateTeamSeasonId(int teamId, int seasonCompetitionId)
+        {
+            string q1 =
+                "SELECT team_season_id FROM TeamSeason " +
+                "WHERE team_id = " + teamId +
+                " AND season_competition_id = " + seasonCompetitionId + ";";
+
+            object r = dbMan.ExecuteScalar(q1);
+            if (r != null && r != DBNull.Value)
+                return Convert.ToInt32(r);
+
+            string q2 =
+                "INSERT INTO TeamSeason (team_id, season_competition_id) VALUES (" +
+                teamId + ", " + seasonCompetitionId + "); " +
+                "SELECT SCOPE_IDENTITY();";
+
+            object newId = dbMan.ExecuteScalar(q2);
+            if (newId == null || newId == DBNull.Value) return -1;
+            return Convert.ToInt32(newId);
+        }
+        public bool PlayerHasTeamInSeasonCompetition(int playerId, int seasonCompetitionId)
+        {
+            string q =
+                "SELECT COUNT(*) " +
+                "FROM PlayerTeamSeason pts " +
+                "JOIN TeamSeason ts ON ts.team_season_id = pts.team_season_id " +
+                "WHERE pts.player_id = " + playerId +
+                " AND ts.season_competition_id = " + seasonCompetitionId + ";";
+
+            return Convert.ToInt32(dbMan.ExecuteScalar(q)) > 0;
+        }
+
+        public int UpsertPlayerTeamInSeasonCompetition(int playerId, int newTeamSeasonId, int seasonCompetitionId)
+        {
+            if (PlayerHasTeamInSeasonCompetition(playerId, seasonCompetitionId))
+            {
+                string qUpdate =
+                    "UPDATE pts SET team_season_id = " + newTeamSeasonId + " " +
+                    "FROM PlayerTeamSeason pts " +
+                    "JOIN TeamSeason ts ON ts.team_season_id = pts.team_season_id " +
+                    "WHERE pts.player_id = " + playerId +
+                    " AND ts.season_competition_id = " + seasonCompetitionId + ";";
+
+                return dbMan.ExecuteNonQuery(qUpdate);
+            }
+
+            string qInsert =
+                "INSERT INTO PlayerTeamSeason (player_id, team_season_id) VALUES (" +
+                playerId + ", " + newTeamSeasonId + ");";
+
+            return dbMan.ExecuteNonQuery(qInsert);
+        }
+
 
         public DataTable SelectAllTeams()
         {
@@ -243,6 +271,11 @@ namespace Taqtik
 
             return dbMan.ExecuteReader(query);
         }
+        public DataTable SelectAllPlayers2()
+        {
+            string q = "SELECT player_id, name FROM Player ORDER BY name;";
+            return dbMan.ExecuteReader(q);
+        }
         public DataTable SelectTeamByUsername(string username)
         {
             string query = "SELECT T.team_id, T.name, T.country, T.year_founded " +
@@ -264,7 +297,7 @@ namespace Taqtik
             string query = "SELECT COUNT(*) FROM Event E " +
                 "JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
                 "WHERE E.player_id = " + playerid + " AND ET.name = 'Goal'";
-            return dbMan.ExecuteReader(query); 
+            return dbMan.ExecuteReader(query);
         }
         public DataTable SelectGameWeeks(int seasonId, int competitionId)
         {
@@ -304,7 +337,7 @@ namespace Taqtik
 
             return Convert.ToInt32(result);
         }
-        public int InsertMatch(int gameweekId,int seasonCompetitionId,int refereeId,string venue)
+        public int InsertMatch(int gameweekId, int seasonCompetitionId, int refereeId, string venue)
         {
             string query =
                 "INSERT INTO Match (gameweek_id, season_competition_id, referee_id, Venue) " +
@@ -336,7 +369,6 @@ namespace Taqtik
         }
         public int InsertReferee(string name, int? age, string country)
         {
-            // name is required
             if (string.IsNullOrWhiteSpace(name)) return 0;
 
             string ageSql = (age.HasValue ? age.Value.ToString() : "NULL");
@@ -349,7 +381,7 @@ namespace Taqtik
                 countrySql +
                 ");";
 
-            return dbMan.ExecuteNonQuery(query); // returns affected rows
+            return dbMan.ExecuteNonQuery(query);
         }
 
         public int InsertCompetition(string name, string country)
@@ -368,6 +400,14 @@ namespace Taqtik
         }
 
 
+        public int GetUserIdByUsername(string username)
+        {
+            string safe = username.Replace("'", "''");
+            string q = "SELECT user_id FROM Users WHERE name = '" + safe + "';";
+            object r = dbMan.ExecuteScalar(q);
+            if (r == null || r == DBNull.Value) return -1;
+            return Convert.ToInt32(r);
+        }
 
 
         public DataTable YellowCard(int playerid)
@@ -415,24 +455,237 @@ namespace Taqtik
         }
         public int SelectMinutesPlayed(int playerid)
         {
-            //if the sum turns out to be nothing, use 0 instead so the math doesn't crash.
             string query = @"
                 SELECT 
-                   (COUNT(DISTINCT E.match_id) * 90) - 
-                   COALESCE(SUM(
-                       CASE 
-                           WHEN ET.name = 'Player In'  THEN E.time       
-                           WHEN ET.name = 'Player Out' THEN 90 - E.time  
-                           ELSE 0 
-                       END
-                   ), 0)
-                FROM Event E
-                JOIN EventType ET ON E.event_type_id = ET.event_type_id
-                WHERE E.player_id = " + playerid;
+                    SUM(
+                        CASE
+                            WHEN sub_out.minute IS NOT NULL AND sub_in.minute IS NOT NULL 
+                                THEN sub_out.minute - sub_in.minute
+                            WHEN sub_out.minute IS NOT NULL 
+                                THEN sub_out.minute
+                            WHEN sub_in.minute IS NOT NULL 
+                                THEN 90 - sub_in.minute
+                            ELSE 90
+                        END
+                    ) AS TotalMinutes
+                FROM (
+                    SELECT DISTINCT match_id 
+                    FROM Event 
+                    WHERE player_id = " + playerid + @"
+                ) matches
+                --like inner join
+                LEFT JOIN (
+                    SELECT match_id, minute 
+                    FROM Event E
+                    JOIN EventType ET ON E.event_type_id = ET.event_type_id
+                    WHERE E.player_id = " + playerid + @" AND ET.name = 'Player Out'
+                ) sub_out ON matches.match_id = sub_out.match_id
+                LEFT JOIN (
+                    SELECT match_id, minute 
+                    FROM Event E
+                    JOIN EventType ET ON E.event_type_id = ET.event_type_id
+                    WHERE E.player_id = " + playerid + @" AND ET.name = 'Player In'
+                ) sub_in ON matches.match_id = sub_in.match_id";
 
             object result = dbMan.ExecuteScalar(query);
-            return (result != null) ? Convert.ToInt32(result) : 0;
+            return (result != null && result != DBNull.Value) ? Convert.ToInt32(result) : 0;
+        }
+        public DataTable GetTeamStats(int playerId)
+        {
+            DataTable statsTable = new DataTable();
+            statsTable.Columns.Add("Statistic", typeof(string));
+            statsTable.Columns.Add("Value", typeof(int));
+
+            statsTable.Rows.Add("Goals", GetSingleStat(SelectGoals(playerId)));
+            statsTable.Rows.Add("Red Cards", GetSingleStat(RedCard(playerId)));
+            statsTable.Rows.Add("Yellow Cards", GetSingleStat(YellowCard(playerId)));
+            statsTable.Rows.Add("Shots", GetSingleStat(Shots(playerId)));
+            statsTable.Rows.Add("Passes", GetSingleStat(Passes(playerId)));
+            statsTable.Rows.Add("Matches Played", SelectMatchesPlayed(playerId));
+
+            return statsTable;
+        }
+
+        private int GetSingleStat(DataTable dt)
+        {
+            if (dt != null && dt.Rows.Count > 0 && dt.Columns.Count > 0)
+            {
+                return Convert.ToInt32(dt.Rows[0][0]);
+            }
+            return 0;
+        }
+
+        public DataTable GetTeamStats(string username)
+        {
+            string query = @"
+            SELECT 
+                'Total Goals' AS Statistic, 
+                COUNT(*) AS Value
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Goal'
         
+            UNION ALL
+        
+            SELECT 'Total Assists', COUNT(*)
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Assist'
+        
+            UNION ALL
+        
+            SELECT 'Red Cards', COUNT(*)
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Red Card'
+        
+            UNION ALL
+        
+            SELECT 'Yellow Cards', COUNT(*)
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Yellow Card'
+        
+            UNION ALL
+        
+            SELECT 'Total Shots', COUNT(*)
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Shot'
+        
+            UNION ALL
+        
+            SELECT 'Total Passes', COUNT(*)
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Pass'
+        
+            UNION ALL
+        
+            SELECT 'Matches Played', COUNT(DISTINCT E.match_id)
+            FROM Event E
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + "'";
+            return dbMan.ExecuteReader(query);
+
+        }
+        public DataTable SelectAllUsers()
+        {
+            string query = "SELECT U.user_id, U.name AS username, U.password_hash, U.role, T.name AS team_name " +
+                           "FROM Users U " +
+                           "LEFT JOIN UserTeamAccess A ON U.user_id = A.user_id " +
+                           "LEFT JOIN Team T ON A.team_id = T.team_id;";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable GetTeamStatsByTeamId(int teamId)
+        {
+            string query =
+                "SELECT " +
+                "T.name AS TeamName, " +
+                "COUNT(DISTINCT MT.match_id) AS MatchesPlayed, " +
+                "SUM(CASE WHEN ET.name = 'Goal' THEN 1 ELSE 0 END) AS Goals, " +
+                "SUM(CASE WHEN ET.name = 'Yellow Card' THEN 1 ELSE 0 END) AS YellowCards, " +
+                "SUM(CASE WHEN ET.name = 'Red Card' THEN 1 ELSE 0 END) AS RedCards " +
+                "FROM Team T " +
+                "LEFT JOIN MatchTeams MT ON T.team_id = MT.team_id " +
+                "LEFT JOIN Event E ON MT.match_id = E.match_id " +
+                "LEFT JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE T.team_id = " + teamId + " " +
+                "GROUP BY T.name;";
+
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectAllUsersForCombo()
+        {
+            string query =
+                "SELECT user_id, name " +
+                "FROM Users " +
+                "ORDER BY name;";
+
+            return dbMan.ExecuteReader(query);
+        }
+        public int DeleteUser(int userId)
+        {
+            string deleteAccess =
+                "DELETE FROM UserTeamAccess WHERE user_id = " + userId + ";";
+
+            dbMan.ExecuteNonQuery(deleteAccess);
+
+            string deleteUser =
+                "DELETE FROM Users WHERE user_id = " + userId + ";";
+
+            return dbMan.ExecuteNonQuery(deleteUser);
+        }
+        public int InsertUser(string name, string password, string role, int teamId)
+        {
+            string query = "SELECT COUNT(*) FROM Users WHERE name = '" + name + "';";
+            int count = (int)dbMan.ExecuteScalar(query);
+
+            if (count > 0)
+                return -1;
+
+            string queryUser =
+                "INSERT INTO Users (name, password_hash, role) " +
+                "VALUES ('" + name + "','" + password + "','" + role + "'); " +
+                "SELECT SCOPE_IDENTITY();";
+
+            object result = dbMan.ExecuteScalar(queryUser);
+
+            if (result == null)
+                return 0;
+
+            int newUserId = Convert.ToInt32(result);
+            if (teamId > 0)
+            {
+                string queryAccess =
+                    "INSERT INTO UserTeamAccess (user_id, team_id) VALUES (" +
+                    newUserId + ", " + teamId + ");";
+
+                dbMan.ExecuteNonQuery(queryAccess);
+            }
+
+            return 1;
         }
 
         public DataTable GetMatchInfo(int matchId)

@@ -22,7 +22,7 @@ namespace Taqtik
             _currentUsername = username;
             DataTable dt = controllerObj.SelectAllTeams();
             DataTable dt1 = controllerObj.SelectAllTeams();
-            
+            _currentUsername = username;
             comboBox1.DisplayMember = "name";
             comboBox1.ValueMember = "team_id";
             comboBox1.DataSource = dt;

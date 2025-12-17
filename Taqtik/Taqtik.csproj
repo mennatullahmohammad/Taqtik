@@ -180,6 +180,12 @@
     <Compile Include="TeamStats.Designer.cs">
       <DependentUpon>TeamStats.cs</DependentUpon>
     </Compile>
+    <Compile Include="TransferPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransferPlayer.Designer.cs">
+      <DependentUpon>TransferPlayer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Add Referee.resx">
       <DependentUpon>Add Referee.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TeamStats.resx">
       <DependentUpon>TeamStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransferPlayer.resx">
+      <DependentUpon>TransferPlayer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

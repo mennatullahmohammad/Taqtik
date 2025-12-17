@@ -13,16 +13,20 @@ namespace Taqtik
     public partial class AddEvent : Form
     {
         Controller controllerObj;
-        int currentUserId;
+        int userId;
         private int teamId;
         private string _currentUsername;
-        public AddEvent(string username, int userId = 1)
+        public AddEvent(string username )
         {
             InitializeComponent();
             controllerObj = new Controller();
-            currentUserId = userId;
-
             _currentUsername= username;
+            userId = controllerObj.GetUserIdByUsername(username);
+            if (userId == -1)
+            {
+                MessageBox.Show("Login succeeded but user id not found.");
+                return;
+            }
 
             DataTable dt = controllerObj.SelectTeamByUsername(_currentUsername);
 
@@ -90,7 +94,7 @@ namespace Taqtik
             int eventTypeId = (int)comboBox_event.SelectedValue;
             int matchId = (int)comboBox_match.SelectedValue;
 
-            int res = controllerObj.InsertEvent(matchId, eventTypeId, playerId, minute, second, currentUserId);
+            int res = controllerObj.InsertEvent(matchId, eventTypeId, playerId, minute, second, userId);
 
             if (res == 0)
             {
