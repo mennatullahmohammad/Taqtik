@@ -62,9 +62,14 @@ namespace Taqtik
             string query = "SELECT team_id, name FROM Team;";
             return dbMan.ExecuteReader(query);
         }
-        public DataTable SelectAllPlayers()
+        public DataTable SelectAllPlayers(int teamid)
         {
-            string query = "SELECT player_id,name FROM Player;";
+            string query =
+               " SELECT P.player_id, P.name FROM Player P" +
+               " JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id " +
+               " JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id " +
+               " WHERE TS.team_id = " + teamid + ";";
+
             return dbMan.ExecuteReader(query);
         }
         public DataTable SelectTeamByUsername(string username)
