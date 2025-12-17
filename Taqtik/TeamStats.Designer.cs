@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeamStats));
             this.dataGridView_teamstats = new System.Windows.Forms.DataGridView();
             this.label_userteam = new System.Windows.Forms.Label();
             this.label_stats = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_teamstats)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView_teamstats
@@ -59,7 +64,7 @@
             this.label_userteam.ForeColor = System.Drawing.Color.White;
             this.label_userteam.Location = new System.Drawing.Point(767, 74);
             this.label_userteam.Name = "label_userteam";
-            this.label_userteam.Size = new System.Drawing.Size(362, 59);
+            this.label_userteam.Size = new System.Drawing.Size(309, 52);
             this.label_userteam.TabIndex = 1;
             this.label_userteam.Text = "//user\'s team//";
             this.label_userteam.Click += new System.EventHandler(this.label_userteam_Click);
@@ -72,18 +77,36 @@
             this.label_stats.ForeColor = System.Drawing.Color.White;
             this.label_stats.Location = new System.Drawing.Point(1175, 74);
             this.label_stats.Name = "label_stats";
-            this.label_stats.Size = new System.Drawing.Size(163, 59);
+            this.label_stats.Size = new System.Drawing.Size(139, 52);
             this.label_stats.TabIndex = 2;
             this.label_stats.Text = "Stats:";
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(32, 190);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(552, 338);
+            this.chart1.TabIndex = 3;
+            this.chart1.Text = "chart1";
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
+            // 
             // TeamStats
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1478, 894);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.label_stats);
             this.Controls.Add(this.label_userteam);
             this.Controls.Add(this.dataGridView_teamstats);
@@ -93,6 +116,7 @@
             this.Text = "TeamStats";
             this.Load += new System.EventHandler(this.TeamStats_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_teamstats)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,5 +127,6 @@
         private System.Windows.Forms.DataGridView dataGridView_teamstats;
         private System.Windows.Forms.Label label_userteam;
         private System.Windows.Forms.Label label_stats;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

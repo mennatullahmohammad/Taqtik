@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+
 
 namespace Taqtik
 {
@@ -61,8 +63,10 @@ namespace Taqtik
                 }
             }
 
-            dataGridView_teamstats.DataSource = dt;
-            dataGridView_teamstats.Refresh();
+           
+                // Populate the chart with stats
+            LoadChart(statsTable);
+            
         }
 
         private void dataGridView_teamstats_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -71,6 +75,11 @@ namespace Taqtik
         }
 
         private void label_userteam_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
         {
 
         }
