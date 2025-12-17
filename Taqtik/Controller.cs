@@ -70,6 +70,60 @@ namespace Taqtik
             return count;
         }
 
+        public int GetOrCreateTeamSeasonId(int teamId, int seasonCompetitionId)
+        {
+            string q1 =
+                "SELECT team_season_id FROM TeamSeason " +
+                "WHERE team_id = " + teamId +
+                " AND season_competition_id = " + seasonCompetitionId + ";";
+
+            object r = dbMan.ExecuteScalar(q1);
+            if (r != null && r != DBNull.Value)
+                return Convert.ToInt32(r);
+
+            string q2 =
+                "INSERT INTO TeamSeason (team_id, season_competition_id) VALUES (" +
+                teamId + ", " + seasonCompetitionId + "); " +
+                "SELECT SCOPE_IDENTITY();";
+
+            object newId = dbMan.ExecuteScalar(q2);
+            if (newId == null || newId == DBNull.Value) return -1;
+            return Convert.ToInt32(newId);
+        }
+        public bool PlayerHasTeamInSeasonCompetition(int playerId, int seasonCompetitionId)
+        {
+            string q =
+                "SELECT COUNT(*) " +
+                "FROM PlayerTeamSeason pts " +
+                "JOIN TeamSeason ts ON ts.team_season_id = pts.team_season_id " +
+                "WHERE pts.player_id = " + playerId +
+                " AND ts.season_competition_id = " + seasonCompetitionId + ";";
+
+            return Convert.ToInt32(dbMan.ExecuteScalar(q)) > 0;
+        }
+
+        public int UpsertPlayerTeamInSeasonCompetition(int playerId, int newTeamSeasonId, int seasonCompetitionId)
+        {
+            if (PlayerHasTeamInSeasonCompetition(playerId, seasonCompetitionId))
+            {
+                string qUpdate =
+                    "UPDATE pts SET team_season_id = " + newTeamSeasonId + " " +
+                    "FROM PlayerTeamSeason pts " +
+                    "JOIN TeamSeason ts ON ts.team_season_id = pts.team_season_id " +
+                    "WHERE pts.player_id = " + playerId +
+                    " AND ts.season_competition_id = " + seasonCompetitionId + ";";
+
+                return dbMan.ExecuteNonQuery(qUpdate);
+            }
+
+            string qInsert =
+                "INSERT INTO PlayerTeamSeason (player_id, team_season_id) VALUES (" +
+                playerId + ", " + newTeamSeasonId + ");";
+
+            return dbMan.ExecuteNonQuery(qInsert);
+        }
+
+
         public DataTable SelectAllTeams()
         {
             string query = "SELECT team_id, name FROM Team;";
@@ -216,6 +270,11 @@ namespace Taqtik
                " WHERE TS.team_id = " + teamid + ";";
 
             return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectAllPlayers2()
+        {
+            string q = "SELECT player_id, name FROM Player ORDER BY name;";
+            return dbMan.ExecuteReader(q);
         }
         public DataTable SelectTeamByUsername(string username)
         {
