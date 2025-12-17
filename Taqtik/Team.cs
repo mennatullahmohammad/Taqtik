@@ -20,6 +20,7 @@ namespace Taqtik
             _currentUsername = username;
 
             DataTable dt = controllerObj.SelectAllTeams();
+            DataTable dt1 = controllerObj.SelectAllTeams();
             
             comboBox1.DisplayMember = "name";
             comboBox1.ValueMember = "team_id";
@@ -27,7 +28,7 @@ namespace Taqtik
 
             comboBox2.DisplayMember = "name";
             comboBox2.ValueMember = "team_id";
-            comboBox2.DataSource = dt;
+            comboBox2.DataSource = dt1;
         }
 
         private void button_teamstats_Click(object sender, EventArgs e)
