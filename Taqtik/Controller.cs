@@ -57,32 +57,43 @@ namespace Taqtik
 
         public int AddTeam(string team, string usern)
         {
-            string queryUser = "SELECT user_id FROM Users WHERE name = " + usern + ";";
-            string queryTeam = "SELECT team_id FROM Team WHERE name = " + team + ";";
+            string queryUser = "SELECT user_id FROM Users WHERE name = '" + usern + "';";
+            string queryTeam = "SELECT team_id FROM Team WHERE name = '" + team + "';";
 
             object result = dbMan.ExecuteScalar(queryUser);
             object result2 = dbMan.ExecuteScalar(queryTeam);
 
-            int UserId = Convert.ToInt32(result);
-            int teamId = Convert.ToInt32(result2);
-
-            string queryTeamAccess = "SELECT team_id, user_id FROM UserTeamAccess WHERE user_id = " + UserId + " AND team_id = " + teamId + ";";
-
-            int result3 = (int)dbMan.ExecuteScalar(queryTeamAccess);
-
-            if(result3 == 0)
+            if (result != null && result2 != null)
             {
-                return -1;
-            }
 
-            else if (result != null && result2 != null)
-            {
-                
+                int UserId = Convert.ToInt32(result);
+                int teamId = Convert.ToInt32(result2);
+
                 string queryAccess = "INSERT INTO UserTeamAccess (user_id, team_id) " +
                                      "VALUES (" + UserId + ", " + teamId + ");";
                 return dbMan.ExecuteNonQuery(queryAccess);
             }
             return 0;
+        }
+
+        public int FindTeam(string team, string usern)
+        {
+            string queryUser = "SELECT user_id FROM Users WHERE name = '" + usern + "';";
+            string queryTeam = "SELECT team_id FROM Team WHERE name = '" + team + "';";
+
+            object result = dbMan.ExecuteScalar(queryUser);
+            object result2 = dbMan.ExecuteScalar(queryTeam);
+
+            if (result == null || result2 == null)
+            {
+                return 0;
+            }
+
+            int UserId = Convert.ToInt32(result);
+            int teamId = Convert.ToInt32(result2);
+            string queryTeamAccess = "SELECT COUNT(*) FROM UserTeamAccess WHERE user_id = " + UserId + " AND team_id = " + teamId + ";";
+            int count = Convert.ToInt32(dbMan.ExecuteScalar(queryTeamAccess));
+            return count;
         }
 
         public DataTable SelectAllTeams()

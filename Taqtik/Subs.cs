@@ -16,5 +16,10 @@ namespace Taqtik
         {
             InitializeComponent();
         }
+
+        private void Subs_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

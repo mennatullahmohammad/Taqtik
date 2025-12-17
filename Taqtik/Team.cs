@@ -13,10 +13,21 @@ namespace Taqtik
     public partial class Team : Form
     {
         private string _currentUsername;
+        Controller controllerObj = new Controller();
         public Team(string username)
         {
             InitializeComponent();
             _currentUsername = username;
+
+            DataTable dt = controllerObj.SelectAllTeams();
+            
+            comboBox1.DisplayMember = "name";
+            comboBox1.ValueMember = "team_id";
+            comboBox1.DataSource = dt;
+
+            comboBox2.DisplayMember = "name";
+            comboBox2.ValueMember = "team_id";
+            comboBox2.DataSource = dt;
         }
 
         private void button_teamstats_Click(object sender, EventArgs e)
@@ -33,8 +44,29 @@ namespace Taqtik
 
         private void Team_Load(object sender, EventArgs e)
         {
-
+            label1.Text = _currentUsername;
         }
 
+        private void button_showmatch_Click(object sender, EventArgs e)
+        {
+            Match match = new Match();
+            match.Show();
+        }
+
+        private void button_showteam_Click(object sender, EventArgs e)
+        {
+            int result = Convert.ToInt32(controllerObj.FindTeam(comboBox2.Text, _currentUsername));
+
+            if (result > 0)
+            {
+                TeamStats teamstat = new TeamStats(_currentUsername);
+                teamstat.Show();
+            }
+            else
+            {
+                subscription sub = new subscription(_currentUsername);
+                sub.Show();
+            }
+        }
     }
 }

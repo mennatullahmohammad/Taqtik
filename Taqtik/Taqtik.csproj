@@ -169,6 +169,11 @@
     <Compile Include="subscription.Designer.cs">
       <DependentUpon>subscription.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaqtikDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaqtikDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Team.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +263,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TaqtikDataSet.xsc">
+      <DependentUpon>TaqtikDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TaqtikDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TaqtikDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TaqtikDataSet.xss">
+      <DependentUpon>TaqtikDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
