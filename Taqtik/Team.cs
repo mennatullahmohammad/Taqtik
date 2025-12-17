@@ -13,10 +13,14 @@ namespace Taqtik
     public partial class Team : Form
     {
         private string _currentUsername;
+        private int teamId;
+        Controller controllerObj = new Controller();
         public Team(string username)
         {
             InitializeComponent();
             _currentUsername= username;
+            DataTable dt= controllerObj.SelectTeamByUsername(_currentUsername);
+            teamId = Convert.ToInt32(dt.Rows[0]["team_id"]);
         }
 
         private void button_teamstats_Click(object sender, EventArgs e)
@@ -27,7 +31,7 @@ namespace Taqtik
 
         private void button_playerstats_Click(object sender, EventArgs e)
         {
-            PlayerStats playerstats = new PlayerStats();
+            PlayerStats playerstats = new PlayerStats(teamId);
             playerstats.Show();
         }
 

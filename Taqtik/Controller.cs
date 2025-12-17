@@ -127,7 +127,33 @@ namespace Taqtik
                 "WHERE E.player_id = " + playerid + " AND ET.name = 'Pass'";
             return dbMan.ExecuteReader(query);
         }
+        public int SelectMatchesPlayed(int playerid)
+        {
+            string query = "SELECT COUNT(DISTINCT match_id) FROM Event " +
+                           "WHERE player_id = " + playerid;
 
+            return (int)dbMan.ExecuteScalar(query);
+        }
+        public int SelectMinutesPlayed(int playerid)
+        {
+            //if the sum turns out to be nothing, use 0 instead so the math doesn't crash.
+            string query = @"
+                SELECT 
+                   (COUNT(DISTINCT E.match_id) * 90) - 
+                   COALESCE(SUM(
+                       CASE 
+                           WHEN ET.name = 'Player In'  THEN E.time       
+                           WHEN ET.name = 'Player Out' THEN 90 - E.time  
+                           ELSE 0 
+                       END
+                   ), 0)
+                FROM Event E
+                JOIN EventType ET ON E.event_type_id = ET.event_type_id
+                WHERE E.player_id = " + playerid;
 
+            object result = dbMan.ExecuteScalar(query);
+            return (result != null) ? Convert.ToInt32(result) : 0;
+        
+        }
     }
 }

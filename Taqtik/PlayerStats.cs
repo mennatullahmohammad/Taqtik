@@ -13,10 +13,10 @@ namespace Taqtik
     public partial class PlayerStats : Form
     {
         Controller controllerObj = new Controller();
-        public PlayerStats()
+        public PlayerStats(int teamid)
         {
             InitializeComponent();
-            DataTable dt = controllerObj.SelectAllPlayers();
+            DataTable dt = controllerObj.SelectAllPlayers(teamid);
             comboBox_players.DisplayMember = "name";
             comboBox_players.ValueMember = "player_id";
             comboBox_players.DataSource = dt;
@@ -47,6 +47,11 @@ namespace Taqtik
             dt = controllerObj.Passes(player_id);
             textBox_passes.Text = dt.Rows[0][0].ToString();
 
+            int count = controllerObj.SelectMatchesPlayed(player_id);
+            textBox_matches.Text = count.ToString();
+
+            count = controllerObj.SelectMinutesPlayed(player_id);
+            textBox_mins.Text = count.ToString();
         }
 
         private void textBox_goals_TextChanged(object sender, EventArgs e)
