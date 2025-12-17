@@ -310,7 +310,6 @@ namespace Taqtik
         }
         public int InsertReferee(string name, int? age, string country)
         {
-            // name is required
             if (string.IsNullOrWhiteSpace(name)) return 0;
 
             string ageSql = (age.HasValue ? age.Value.ToString() : "NULL");
@@ -323,7 +322,7 @@ namespace Taqtik
                 countrySql +
                 ");";
 
-            return dbMan.ExecuteNonQuery(query); // returns affected rows
+            return dbMan.ExecuteNonQuery(query);
         }
 
         public int InsertCompetition(string name, string country)
@@ -397,7 +396,6 @@ namespace Taqtik
         }
         public int SelectMinutesPlayed(int playerid)
         {
-            //if the sum turns out to be nothing, use 0 instead so the math doesn't crash.
             string query = @"
                 SELECT 
                    (COUNT(DISTINCT E.match_id) * 90) - 
@@ -602,8 +600,6 @@ namespace Taqtik
                 return 0;
 
             int newUserId = Convert.ToInt32(result);
-
-            // ONLY assign team if teamId > 0
             if (teamId > 0)
             {
                 string queryAccess =
