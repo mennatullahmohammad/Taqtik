@@ -14,18 +14,13 @@ namespace Taqtik
     {
         Controller controllerObj = new Controller();
         private string _currentUsername;
-        public TeamStats(string username)
-        {
-            InitializeComponent();
-            _currentUsername = username;
-        }
         private bool openedByAdmin = false;
         private int selectedTeamId;
-        public TeamStats(int teamId)
+        public TeamStats(int teamId, bool admin=false)
         {
             InitializeComponent();
             selectedTeamId = teamId;
-            openedByAdmin = true;
+            openedByAdmin = admin;
         }
 
         private void TeamStats_Load(object sender, EventArgs e)
@@ -49,7 +44,7 @@ namespace Taqtik
             else
             {
                 // User opened the form → use username (original behavior)
-                dt = controllerObj.SelectTeamByUsername(_currentUsername);
+                dt = controllerObj.SelectTeamByTeamId(selectedTeamId);
 
 
                 if (dt != null && dt.Rows.Count > 0)

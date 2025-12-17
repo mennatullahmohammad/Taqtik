@@ -282,7 +282,15 @@ namespace Taqtik
                            "FROM Team T " +
                            "JOIN UserTeamAccess A ON T.team_id = A.team_id " +
                            "JOIN Users U ON U.user_id = A.user_id " +
-                           "WHERE U.name = '" + username + "';";
+                           "WHERE U.id = '" + username + "';";
+
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectTeamByTeamId(int teamId)
+        {
+            string query = "SELECT team_id, name, country, year_founded " +
+                           "FROM Team " +
+                           "WHERE team_id = " + teamId + ";";
 
             return dbMan.ExecuteReader(query);
         }

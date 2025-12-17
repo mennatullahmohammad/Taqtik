@@ -72,7 +72,7 @@ namespace Taqtik
 
             if (result > 0)
             {
-                TeamStats teamstat = new TeamStats(_currentUsername);
+                TeamStats teamstat = new TeamStats(teamId);
                 teamstat.Show();
             }
             else

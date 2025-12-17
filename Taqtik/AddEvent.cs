@@ -28,7 +28,7 @@ namespace Taqtik
                 return;
             }
 
-            DataTable dt = controllerObj.SelectTeamByUsername(_currentUsername);
+            DataTable dt = controllerObj.SelectTeamByTeamId(teamId);
 
             teamId = Convert.ToInt32(dt.Rows[0]["team_id"]);
 
