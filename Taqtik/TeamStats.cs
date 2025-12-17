@@ -24,16 +24,20 @@ namespace Taqtik
         {
             DataTable dt = controllerObj.SelectTeamByUsername(_currentUsername);
 
-            dataGridView_teamstats.DataSource = dt;
-            dataGridView_teamstats.Refresh();
             if (dt != null && dt.Rows.Count > 0)
             {
-                string teamName = dt.Rows[0]["name"].ToString(); //default team at row 0
+                string teamName = dt.Rows[0]["name"].ToString(); //default row 0
                 label_userteam.Text = teamName;
+
+                DataTable statsTable = controllerObj.GetTeamStats(_currentUsername);
+                dataGridView_teamstats.DataSource = statsTable;
+                dataGridView_teamstats.Refresh();
+
             }
             else
             {
                 label_userteam.Text = "No Team Assigned";
+                dataGridView_teamstats.DataSource = null;
             }
         }
 
