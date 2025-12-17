@@ -44,7 +44,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(934, 103);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(367, 55);
+            this.label1.Size = new System.Drawing.Size(306, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "Transfer Player";
             // 
@@ -54,7 +54,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(824, 253);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 40);
+            this.label2.Size = new System.Drawing.Size(107, 36);
             this.label2.TabIndex = 1;
             this.label2.Text = "Player:";
             // 
@@ -63,7 +63,7 @@
             this.comboBox_player.FormattingEnabled = true;
             this.comboBox_player.Location = new System.Drawing.Point(1033, 250);
             this.comboBox_player.Name = "comboBox_player";
-            this.comboBox_player.Size = new System.Drawing.Size(318, 48);
+            this.comboBox_player.Size = new System.Drawing.Size(318, 44);
             this.comboBox_player.TabIndex = 2;
             // 
             // comboBox_toTeam
@@ -71,7 +71,7 @@
             this.comboBox_toTeam.FormattingEnabled = true;
             this.comboBox_toTeam.Location = new System.Drawing.Point(1033, 402);
             this.comboBox_toTeam.Name = "comboBox_toTeam";
-            this.comboBox_toTeam.Size = new System.Drawing.Size(318, 48);
+            this.comboBox_toTeam.Size = new System.Drawing.Size(318, 44);
             this.comboBox_toTeam.TabIndex = 4;
             // 
             // label3
@@ -80,7 +80,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(806, 405);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(171, 40);
+            this.label3.Size = new System.Drawing.Size(139, 36);
             this.label3.TabIndex = 3;
             this.label3.Text = "To Team:";
             // 
@@ -93,10 +93,11 @@
             this.button_transfer.TabIndex = 5;
             this.button_transfer.Text = "Transfer";
             this.button_transfer.UseVisualStyleBackColor = true;
+            this.button_transfer.Click += new System.EventHandler(this.button_transfer_Click);
             // 
             // TransferPlayer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
