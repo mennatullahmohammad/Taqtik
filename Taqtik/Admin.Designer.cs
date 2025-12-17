@@ -88,7 +88,6 @@
             this.dataGridView_users.RowTemplate.Height = 28;
             this.dataGridView_users.Size = new System.Drawing.Size(896, 259);
             this.dataGridView_users.TabIndex = 3;
-            this.dataGridView_users.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_users_CellContentClick);
             // 
             // button_display
             // 

@@ -25,7 +25,7 @@ namespace Taqtik
             comboBox_chooseteam.DataSource = dt2;
             comboBox_chooseteam.DisplayMember = "name";
             comboBox_chooseteam.ValueMember = "team_id";
-            DataTable dt3
+            DataTable dt3;
         }
 
         private void button_adduser_Click(object sender, EventArgs e)
