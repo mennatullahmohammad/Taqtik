@@ -434,5 +434,31 @@ namespace Taqtik
             return (result != null) ? Convert.ToInt32(result) : 0;
         
         }
+        public DataTable SelectAllUsers()
+        {
+            string query = "SELECT U.user_id, U.name AS username, U.password_hash, U.role, T.name AS team_name " +
+                           "FROM Users U " +
+                           "LEFT JOIN UserTeamAccess A ON U.user_id = A.user_id " +
+                           "LEFT JOIN Team T ON A.team_id = T.team_id;";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable GetTeamStatsByTeamId(int teamId)
+        {
+            string query =
+                "SELECT " +
+                "T.name AS TeamName, " +
+                "COUNT(DISTINCT MT.match_id) AS MatchesPlayed, " +
+                "SUM(CASE WHEN ET.name = 'Goal' THEN 1 ELSE 0 END) AS Goals, " +
+                "SUM(CASE WHEN ET.name = 'Yellow Card' THEN 1 ELSE 0 END) AS YellowCards, " +
+                "SUM(CASE WHEN ET.name = 'Red Card' THEN 1 ELSE 0 END) AS RedCards " +
+                "FROM Team T " +
+                "LEFT JOIN MatchTeams MT ON T.team_id = MT.team_id " +
+                "LEFT JOIN Event E ON MT.match_id = E.match_id " +
+                "LEFT JOIN EventType ET ON E.event_type_id = ET.event_type_id " +
+                "WHERE T.team_id = " + teamId + " " +
+                "GROUP BY T.name;";
+
+            return dbMan.ExecuteReader(query);
+        }
     }
 }
