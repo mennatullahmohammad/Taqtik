@@ -766,7 +766,21 @@ namespace Taqtik
         }
 
 
+        public int GetTeamIdByName(string teamName)
+        {
+            if (string.IsNullOrWhiteSpace(teamName))
+                return -1;
 
+            string query = "SELECT team_id FROM Team WHERE name = '" + teamName.Replace("'", "''") + "'";
+            object result = dbMan.ExecuteScalar(query);
+
+            if (result != null && result != DBNull.Value)
+            {
+                return Convert.ToInt32(result);
+            }
+
+            return -1; 
+        }
 
     }
 }

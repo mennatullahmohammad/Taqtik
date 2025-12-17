@@ -37,7 +37,8 @@ namespace Taqtik
 
         private void button_teamstats_Click(object sender, EventArgs e)
         {
-            TeamStats teamstats = new TeamStats(_currentUsername);
+            int idteam = controllerObj.GetTeamIdByName(comboBox2.Text);
+            TeamStats teamstats = new TeamStats(idteam);
             teamstats.Show();
         }
 
