@@ -20,16 +20,16 @@ namespace Taqtik
             InitializeComponent();
 
             DataTable dt = controllerObj.SelectAllTeams();
+            DataTable dt1 = controllerObj.SelectAllTeams();
             
             comboBox1.DisplayMember = "name";
             comboBox1.ValueMember = "team_id";
             comboBox1.DataSource = dt;
             comboBox2.DisplayMember = "name";
             comboBox2.ValueMember = "team_id";
-            comboBox2.DataSource = dt;
-            _currentUsername= username;
-            dt= controllerObj.SelectTeamByUsername(_currentUsername);
-            teamId = Convert.ToInt32(dt.Rows[0]["team_id"]);
+            comboBox2.DataSource = dt1;
+            DataTable dt3 = controllerObj.SelectTeamByUsername(_currentUsername);
+            teamId = Convert.ToInt32(dt3.Rows[0]["team_id"]);
         }
 
         private void button_teamstats_Click(object sender, EventArgs e)
