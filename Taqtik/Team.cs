@@ -28,7 +28,7 @@ namespace Taqtik
             comboBox2.ValueMember = "team_id";
             comboBox2.DataSource = dt;
             _currentUsername= username;
-            DataTable dt= controllerObj.SelectTeamByUsername(_currentUsername);
+            dt= controllerObj.SelectTeamByUsername(_currentUsername);
             teamId = Convert.ToInt32(dt.Rows[0]["team_id"]);
         }
 
