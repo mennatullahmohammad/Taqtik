@@ -462,95 +462,98 @@ namespace Taqtik
         public DataTable GetTeamStats(string username)
         {
             string query = @"
-        SELECT 
-            'Total Goals' AS Statistic, 
-            COUNT(*) AS Value
-        FROM Event E
-        JOIN EventType ET ON E.event_type_id = ET.event_type_id
-        JOIN Player P ON E.player_id = P.player_id
-        JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
-        JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
-        JOIN Team T ON TS.team_id = T.team_id
-        JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
-        JOIN Users U ON U.user_id = UTA.user_id
-        WHERE U.name = '" + username + @"' AND ET.name = 'Goal'
+            SELECT 
+                'Total Goals' AS Statistic, 
+                COUNT(*) AS Value
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Goal'
         
-        UNION ALL
+            UNION ALL
         
-        SELECT 'Total Assists', COUNT(*)
-        FROM Event E
-        JOIN EventType ET ON E.event_type_id = ET.event_type_id
-        JOIN Player P ON E.player_id = P.player_id
-        JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
-        JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
-        JOIN Team T ON TS.team_id = T.team_id
-        JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
-        JOIN Users U ON U.user_id = UTA.user_id
-        WHERE U.name = '" + username + @"' AND ET.name = 'Assist'
+            SELECT 'Total Assists', COUNT(*)
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Assist'
         
-        UNION ALL
+            UNION ALL
         
-        SELECT 'Red Cards', COUNT(*)
-        FROM Event E
-        JOIN EventType ET ON E.event_type_id = ET.event_type_id
-        JOIN Player P ON E.player_id = P.player_id
-        JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
-        JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
-        JOIN Team T ON TS.team_id = T.team_id
-        JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
-        JOIN Users U ON U.user_id = UTA.user_id
-        WHERE U.name = '" + username + @"' AND ET.name = 'Red Card'
+            SELECT 'Red Cards', COUNT(*)
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Red Card'
         
-        UNION ALL
+            UNION ALL
         
-        SELECT 'Yellow Cards', COUNT(*)
-        FROM Event E
-        JOIN EventType ET ON E.event_type_id = ET.event_type_id
-        JOIN Player P ON E.player_id = P.player_id
-        JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
-        JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
-        JOIN Team T ON TS.team_id = T.team_id
-        JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
-        JOIN Users U ON U.user_id = UTA.user_id
-        WHERE U.name = '" + username + @"' AND ET.name = 'Yellow Card'
+            SELECT 'Yellow Cards', COUNT(*)
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Yellow Card'
         
-        UNION ALL
+            UNION ALL
         
-        SELECT 'Total Shots', COUNT(*)
-        FROM Event E
-        JOIN EventType ET ON E.event_type_id = ET.event_type_id
-        JOIN Player P ON E.player_id = P.player_id
-        JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
-        JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
-        JOIN Team T ON TS.team_id = T.team_id
-        JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
-        JOIN Users U ON U.user_id = UTA.user_id
-        WHERE U.name = '" + username + @"' AND ET.name = 'Shot'
+            SELECT 'Total Shots', COUNT(*)
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Shot'
         
-        UNION ALL
+            UNION ALL
         
-        SELECT 'Total Passes', COUNT(*)
-        FROM Event E
-        JOIN EventType ET ON E.event_type_id = ET.event_type_id
-        JOIN Player P ON E.player_id = P.player_id
-        JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
-        JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
-        JOIN Team T ON TS.team_id = T.team_id
-        JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
-        JOIN Users U ON U.user_id = UTA.user_id
-        WHERE U.name = '" + username + @"' AND ET.name = 'Pass'
+            SELECT 'Total Passes', COUNT(*)
+            FROM Event E
+            JOIN EventType ET ON E.event_type_id = ET.event_type_id
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + @"' AND ET.name = 'Pass'
         
-        UNION ALL
+            UNION ALL
         
-        SELECT 'Matches Played', COUNT(DISTINCT E.match_id)
-        FROM Event E
-        JOIN Player P ON E.player_id = P.player_id
-        JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
-        JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
-        JOIN Team T ON TS.team_id = T.team_id
-        JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
-        JOIN Users U ON U.user_id = UTA.user_id
-        WHERE U.name = '" + username + "'";
+            SELECT 'Matches Played', COUNT(DISTINCT E.match_id)
+            FROM Event E
+            JOIN Player P ON E.player_id = P.player_id
+            JOIN PlayerTeamSeason PTS ON P.player_id = PTS.player_id
+            JOIN TeamSeason TS ON PTS.team_season_id = TS.team_season_id
+            JOIN Team T ON TS.team_id = T.team_id
+            JOIN UserTeamAccess UTA ON T.team_id = UTA.team_id
+            JOIN Users U ON U.user_id = UTA.user_id
+            WHERE U.name = '" + username + "'";
+            return dbMan.ExecuteReader(query);
+
+        }
         public DataTable SelectAllUsers()
         {
             string query = "SELECT U.user_id, U.name AS username, U.password_hash, U.role, T.name AS team_name " +
