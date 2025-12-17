@@ -12,9 +12,11 @@ namespace Taqtik
 {
     public partial class DataEntry : Form
     {
-        public DataEntry()
+        private string _currentUsername;
+        public DataEntry(string username)
         {
             InitializeComponent();
+            _currentUsername = username;
         }
 
         private void button_addMatch_Click(object sender, EventArgs e)
@@ -27,7 +29,7 @@ namespace Taqtik
 
         private void button_addEvent_Click(object sender, EventArgs e)
         {
-            AddEvent addEventForm = new AddEvent();
+            AddEvent addEventForm = new AddEvent(_currentUsername);
             addEventForm.ShowDialog();
         }
 
@@ -76,6 +78,11 @@ namespace Taqtik
         {
             AddCompetitionInstance addCompetitionInstanceForm = new AddCompetitionInstance();
             addCompetitionInstanceForm.ShowDialog();
+        }
+
+        private void DataEntry_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

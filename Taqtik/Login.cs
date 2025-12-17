@@ -69,7 +69,7 @@ namespace Taqtik
                 }
                 else if (role == "DataEntry")
                 {
-                    DataEntry dataentry= new DataEntry();
+                    DataEntry dataentry= new DataEntry(username);
                     dataentry.Show();
                     this.Hide();
                 }
@@ -90,11 +90,6 @@ namespace Taqtik
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DataEntry dataEntry = new DataEntry();
-            dataEntry.Show();
-            this.Hide();
-        }
+
     }
 }

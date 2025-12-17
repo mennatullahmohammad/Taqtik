@@ -14,14 +14,21 @@ namespace Taqtik
     {
         Controller controllerObj;
         int currentUserId;
-        public AddEvent(int userId=1)
+        private int teamId;
+        private string _currentUsername;
+        public AddEvent(string username, int userId = 1)
         {
             InitializeComponent();
             controllerObj = new Controller();
             currentUserId = userId;
 
-           
-            DataTable dtPlayers = controllerObj.SelectAllPlayers();
+            _currentUsername= username;
+
+            DataTable dt = controllerObj.SelectTeamByUsername(_currentUsername);
+
+            teamId = Convert.ToInt32(dt.Rows[0]["team_id"]);
+
+            DataTable dtPlayers = controllerObj.SelectAllPlayers(teamId);
             comboBox_player.DataSource = dtPlayers;
             comboBox_player.DisplayMember = "name";
             comboBox_player.ValueMember = "player_id";
