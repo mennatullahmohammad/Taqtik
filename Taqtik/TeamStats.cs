@@ -51,7 +51,7 @@ namespace Taqtik
             else
             {
                 // User opened the form → use username (original behavior)
-                dt = controllerObj.SelectTeamByUsername(_currentUsername);
+                dt = controllerObj.GetTeamStatsByTeamId(selectedTeamId);
 
 
                 if (dt != null && dt.Rows.Count > 0)
@@ -70,7 +70,7 @@ namespace Taqtik
             }
 
            
-                // Populate the chart with stats
+            // Populate the chart with stats
             LoadChart(statsTable);
             
         }

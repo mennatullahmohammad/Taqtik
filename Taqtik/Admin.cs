@@ -63,7 +63,7 @@ namespace Taqtik
                 return;
             }
             int teamId = Convert.ToInt32(comboBox_chooseteam.SelectedValue);
-            TeamStats teamstats = new TeamStats(teamId);
+            TeamStats teamstats = new TeamStats(teamId,true);
             teamstats.Show();
         }
 
