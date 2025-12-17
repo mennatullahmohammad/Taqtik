@@ -39,6 +39,8 @@
             // 
             this.dataGridView_teamstats.AllowUserToAddRows = false;
             this.dataGridView_teamstats.AllowUserToDeleteRows = false;
+            this.dataGridView_teamstats.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView_teamstats.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView_teamstats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_teamstats.Location = new System.Drawing.Point(590, 178);
             this.dataGridView_teamstats.Name = "dataGridView_teamstats";
@@ -52,9 +54,12 @@
             // label_userteam
             // 
             this.label_userteam.AutoSize = true;
-            this.label_userteam.Location = new System.Drawing.Point(807, 100);
+            this.label_userteam.BackColor = System.Drawing.Color.Transparent;
+            this.label_userteam.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_userteam.ForeColor = System.Drawing.Color.White;
+            this.label_userteam.Location = new System.Drawing.Point(767, 74);
             this.label_userteam.Name = "label_userteam";
-            this.label_userteam.Size = new System.Drawing.Size(197, 36);
+            this.label_userteam.Size = new System.Drawing.Size(362, 59);
             this.label_userteam.TabIndex = 1;
             this.label_userteam.Text = "//user\'s team//";
             this.label_userteam.Click += new System.EventHandler(this.label_userteam_Click);
@@ -62,15 +67,18 @@
             // label_stats
             // 
             this.label_stats.AutoSize = true;
-            this.label_stats.Location = new System.Drawing.Point(1051, 100);
+            this.label_stats.BackColor = System.Drawing.Color.Transparent;
+            this.label_stats.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_stats.ForeColor = System.Drawing.Color.White;
+            this.label_stats.Location = new System.Drawing.Point(1175, 74);
             this.label_stats.Name = "label_stats";
-            this.label_stats.Size = new System.Drawing.Size(90, 36);
+            this.label_stats.Size = new System.Drawing.Size(163, 59);
             this.label_stats.TabIndex = 2;
             this.label_stats.Text = "Stats:";
             // 
             // TeamStats
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
