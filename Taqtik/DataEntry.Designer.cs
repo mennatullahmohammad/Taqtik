@@ -75,6 +75,7 @@
             this.label_username.Size = new System.Drawing.Size(236, 42);
             this.label_username.TabIndex = 2;
             this.label_username.Text = "//username//";
+            this.label_username.Click += new System.EventHandler(this.label_username_Click);
             // 
             // button_addEvent
             // 
