@@ -368,6 +368,14 @@ namespace Taqtik
         }
 
 
+        public int GetUserIdByUsername(string username)
+        {
+            string safe = username.Replace("'", "''");
+            string q = "SELECT user_id FROM Users WHERE name = '" + safe + "';";
+            object r = dbMan.ExecuteScalar(q);
+            if (r == null || r == DBNull.Value) return -1;
+            return Convert.ToInt32(r);
+        }
 
 
         public DataTable YellowCard(int playerid)
