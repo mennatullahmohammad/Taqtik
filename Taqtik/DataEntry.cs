@@ -63,14 +63,19 @@ namespace Taqtik
 
         private void buttoncompinstance_Click(object sender, EventArgs e)
         {
-            AddCompetitionInstance addCompetitionInstanceForm = new AddCompetitionInstance();
-            addCompetitionInstanceForm.ShowDialog();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             AddTeamtoCompetition addTeamtoCompetitionForm = new AddTeamtoCompetition();
             addTeamtoCompetitionForm.ShowDialog();
+        }
+
+        private void buttoncompinstance_Click_1(object sender, EventArgs e)
+        {
+            AddCompetitionInstance addCompetitionInstanceForm = new AddCompetitionInstance();
+            addCompetitionInstanceForm.ShowDialog();
         }
     }
 }

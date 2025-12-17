@@ -56,17 +56,22 @@ namespace Taqtik
                 {
                     Team team = new Team(username);
                     team.Show();
+                    this.Hide();
+
 
                 }
                 else if(role == "Admin")
                 {
                     Admin admin = new Admin();
                     admin.Show();
+                    this.Hide();
+
                 }
                 else if (role == "DataEntry")
                 {
                     DataEntry dataentry= new DataEntry();
                     dataentry.Show();
+                    this.Hide();
                 }
             }
             else

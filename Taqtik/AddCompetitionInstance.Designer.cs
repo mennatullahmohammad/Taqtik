@@ -50,7 +50,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(794, 95);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(598, 55);
+            this.label4.Size = new System.Drawing.Size(501, 46);
             this.label4.TabIndex = 8;
             this.label4.Text = "Add Competition Instance";
             // 
@@ -59,8 +59,9 @@
             this.comboBox_Season.FormattingEnabled = true;
             this.comboBox_Season.Location = new System.Drawing.Point(1022, 202);
             this.comboBox_Season.Name = "comboBox_Season";
-            this.comboBox_Season.Size = new System.Drawing.Size(285, 48);
+            this.comboBox_Season.Size = new System.Drawing.Size(285, 44);
             this.comboBox_Season.TabIndex = 75;
+            this.comboBox_Season.SelectedIndexChanged += new System.EventHandler(this.comboBox_Season_SelectedIndexChanged);
             // 
             // label_1
             // 
@@ -68,7 +69,7 @@
             this.label_1.BackColor = System.Drawing.Color.Transparent;
             this.label_1.Location = new System.Drawing.Point(844, 205);
             this.label_1.Name = "label_1";
-            this.label_1.Size = new System.Drawing.Size(149, 40);
+            this.label_1.Size = new System.Drawing.Size(124, 36);
             this.label_1.TabIndex = 74;
             this.label_1.Text = "Season:";
             // 
@@ -77,7 +78,7 @@
             this.comboBox_competition.FormattingEnabled = true;
             this.comboBox_competition.Location = new System.Drawing.Point(1022, 289);
             this.comboBox_competition.Name = "comboBox_competition";
-            this.comboBox_competition.Size = new System.Drawing.Size(285, 48);
+            this.comboBox_competition.Size = new System.Drawing.Size(285, 44);
             this.comboBox_competition.TabIndex = 77;
             // 
             // label1
@@ -86,7 +87,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(797, 292);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 40);
+            this.label1.Size = new System.Drawing.Size(181, 36);
             this.label1.TabIndex = 76;
             this.label1.Text = "Competition:";
             // 
@@ -94,7 +95,7 @@
             // 
             this.textBox_noOfTeams.Location = new System.Drawing.Point(1022, 527);
             this.textBox_noOfTeams.Name = "textBox_noOfTeams";
-            this.textBox_noOfTeams.Size = new System.Drawing.Size(236, 48);
+            this.textBox_noOfTeams.Size = new System.Drawing.Size(236, 41);
             this.textBox_noOfTeams.TabIndex = 83;
             // 
             // label3
@@ -103,7 +104,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(762, 530);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(243, 40);
+            this.label3.Size = new System.Drawing.Size(199, 36);
             this.label3.TabIndex = 82;
             this.label3.Text = "No. of Teams:";
             // 
@@ -111,7 +112,7 @@
             // 
             this.textBox_relegation.Location = new System.Drawing.Point(1022, 451);
             this.textBox_relegation.Name = "textBox_relegation";
-            this.textBox_relegation.Size = new System.Drawing.Size(236, 48);
+            this.textBox_relegation.Size = new System.Drawing.Size(236, 41);
             this.textBox_relegation.TabIndex = 81;
             // 
             // label2
@@ -120,7 +121,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(794, 454);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 40);
+            this.label2.Size = new System.Drawing.Size(166, 36);
             this.label2.TabIndex = 80;
             this.label2.Text = "Relegation:";
             // 
@@ -128,7 +129,7 @@
             // 
             this.textBox_promotion.Location = new System.Drawing.Point(1022, 370);
             this.textBox_promotion.Name = "textBox_promotion";
-            this.textBox_promotion.Size = new System.Drawing.Size(236, 48);
+            this.textBox_promotion.Size = new System.Drawing.Size(236, 41);
             this.textBox_promotion.TabIndex = 79;
             // 
             // label5
@@ -137,7 +138,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Location = new System.Drawing.Point(802, 373);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(191, 40);
+            this.label5.Size = new System.Drawing.Size(159, 36);
             this.label5.TabIndex = 78;
             this.label5.Text = "Promotion:";
             // 
@@ -150,10 +151,11 @@
             this.button_add.TabIndex = 84;
             this.button_add.Text = "Add";
             this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
             // AddCompetitionInstance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

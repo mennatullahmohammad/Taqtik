@@ -46,7 +46,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(793, 146);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(591, 55);
+            this.label4.Size = new System.Drawing.Size(496, 46);
             this.label4.TabIndex = 23;
             this.label4.Text = "Add Team to Competition";
             // 
@@ -55,7 +55,7 @@
             this.comboBox_competition.FormattingEnabled = true;
             this.comboBox_competition.Location = new System.Drawing.Point(1077, 408);
             this.comboBox_competition.Name = "comboBox_competition";
-            this.comboBox_competition.Size = new System.Drawing.Size(285, 48);
+            this.comboBox_competition.Size = new System.Drawing.Size(285, 44);
             this.comboBox_competition.TabIndex = 81;
             // 
             // label1
@@ -64,7 +64,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(852, 411);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 40);
+            this.label1.Size = new System.Drawing.Size(181, 36);
             this.label1.TabIndex = 80;
             this.label1.Text = "Competition:";
             // 
@@ -73,7 +73,7 @@
             this.comboBox_Season.FormattingEnabled = true;
             this.comboBox_Season.Location = new System.Drawing.Point(1077, 321);
             this.comboBox_Season.Name = "comboBox_Season";
-            this.comboBox_Season.Size = new System.Drawing.Size(285, 48);
+            this.comboBox_Season.Size = new System.Drawing.Size(285, 44);
             this.comboBox_Season.TabIndex = 79;
             // 
             // label_1
@@ -82,7 +82,7 @@
             this.label_1.BackColor = System.Drawing.Color.Transparent;
             this.label_1.Location = new System.Drawing.Point(899, 324);
             this.label_1.Name = "label_1";
-            this.label_1.Size = new System.Drawing.Size(149, 40);
+            this.label_1.Size = new System.Drawing.Size(124, 36);
             this.label_1.TabIndex = 78;
             this.label_1.Text = "Season:";
             // 
@@ -91,7 +91,7 @@
             this.comboBox_team.FormattingEnabled = true;
             this.comboBox_team.Location = new System.Drawing.Point(1077, 237);
             this.comboBox_team.Name = "comboBox_team";
-            this.comboBox_team.Size = new System.Drawing.Size(285, 48);
+            this.comboBox_team.Size = new System.Drawing.Size(285, 44);
             this.comboBox_team.TabIndex = 83;
             // 
             // label2
@@ -100,7 +100,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(899, 240);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 40);
+            this.label2.Size = new System.Drawing.Size(96, 36);
             this.label2.TabIndex = 82;
             this.label2.Text = "Team:";
             // 
@@ -113,10 +113,11 @@
             this.button_add.TabIndex = 84;
             this.button_add.Text = "Add";
             this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
             // AddTeamtoCompetition
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));

@@ -49,7 +49,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(893, 218);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 40);
+            this.label1.Size = new System.Drawing.Size(107, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "Player:";
             // 
@@ -58,7 +58,7 @@
             this.comboBox_player.FormattingEnabled = true;
             this.comboBox_player.Location = new System.Drawing.Point(1046, 215);
             this.comboBox_player.Name = "comboBox_player";
-            this.comboBox_player.Size = new System.Drawing.Size(293, 48);
+            this.comboBox_player.Size = new System.Drawing.Size(293, 44);
             this.comboBox_player.TabIndex = 1;
             // 
             // button_Add
@@ -71,13 +71,14 @@
             this.button_Add.TabIndex = 2;
             this.button_Add.Text = "Add";
             this.button_Add.UseVisualStyleBackColor = false;
+            this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // comboBox_event
             // 
             this.comboBox_event.FormattingEnabled = true;
             this.comboBox_event.Location = new System.Drawing.Point(1046, 299);
             this.comboBox_event.Name = "comboBox_event";
-            this.comboBox_event.Size = new System.Drawing.Size(293, 48);
+            this.comboBox_event.Size = new System.Drawing.Size(293, 44);
             this.comboBox_event.TabIndex = 4;
             // 
             // label2
@@ -86,7 +87,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(893, 302);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 40);
+            this.label2.Size = new System.Drawing.Size(99, 36);
             this.label2.TabIndex = 3;
             this.label2.Text = "Event:";
             // 
@@ -95,7 +96,7 @@
             this.comboBox_match.FormattingEnabled = true;
             this.comboBox_match.Location = new System.Drawing.Point(1046, 381);
             this.comboBox_match.Name = "comboBox_match";
-            this.comboBox_match.Size = new System.Drawing.Size(293, 48);
+            this.comboBox_match.Size = new System.Drawing.Size(293, 44);
             this.comboBox_match.TabIndex = 6;
             // 
             // label3
@@ -104,7 +105,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(893, 384);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 40);
+            this.label3.Size = new System.Drawing.Size(104, 36);
             this.label3.TabIndex = 5;
             this.label3.Text = "Match:";
             // 
@@ -114,7 +115,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Location = new System.Drawing.Point(893, 469);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 40);
+            this.label4.Size = new System.Drawing.Size(72, 36);
             this.label4.TabIndex = 7;
             this.label4.Text = "Min:";
             // 
@@ -122,14 +123,14 @@
             // 
             this.textBox_min.Location = new System.Drawing.Point(1001, 466);
             this.textBox_min.Name = "textBox_min";
-            this.textBox_min.Size = new System.Drawing.Size(100, 48);
+            this.textBox_min.Size = new System.Drawing.Size(100, 41);
             this.textBox_min.TabIndex = 8;
             // 
             // textBox_sec
             // 
             this.textBox_sec.Location = new System.Drawing.Point(1239, 469);
             this.textBox_sec.Name = "textBox_sec";
-            this.textBox_sec.Size = new System.Drawing.Size(100, 48);
+            this.textBox_sec.Size = new System.Drawing.Size(100, 41);
             this.textBox_sec.TabIndex = 10;
             this.textBox_sec.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -139,7 +140,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Location = new System.Drawing.Point(1128, 472);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 40);
+            this.label5.Size = new System.Drawing.Size(74, 36);
             this.label5.TabIndex = 9;
             this.label5.Text = "Sec:";
             this.label5.Click += new System.EventHandler(this.label5_Click);
@@ -151,13 +152,13 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(1037, 97);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(231, 52);
+            this.label6.Size = new System.Drawing.Size(200, 42);
             this.label6.TabIndex = 11;
             this.label6.Text = "Add Event";
             // 
             // AddEvent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
